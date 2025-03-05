@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Info from "./components/Info/page";
+import Info from "../../components/Info/Info";
 
 
 export default function Home() {
