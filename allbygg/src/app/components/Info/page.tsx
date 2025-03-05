@@ -1,14 +1,14 @@
 import Image from 'next/image'
 import React from 'react'
 
-interface InfoProps {
+interface props {
   reverse?: boolean; // Optional prop to control layout order
   BigText: string;
   SmallText: string;
   ImageSrc: string;
 }
 
-const Info: React.FC<InfoProps> = ({ BigText, ImageSrc, SmallText, reverse = false })=> {
+const Info: React.FC<props> = ({ BigText, ImageSrc, SmallText, reverse = false })=> {
   return (
     <div className={`flex flex-row mt-2 items-center justify-center w-full relative bg-white ${reverse ? 'flex-row-reverse' : 'flex-row'}`}>
 {}
