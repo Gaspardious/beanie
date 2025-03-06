@@ -21,13 +21,13 @@ useEffect(() => {
 
   return (
     <header 
-      className={`h-28 flex flex-col items-center justify-center sticky top-0 z-50 transition-all duration-300 ${
+      className={`h-22 flex flex-col items-center justify-center sticky top-0 z-50 transition-all duration-300 ${
       isScrolled ? "bg-black/50 backdrop-blur-md" : "bg-white"
     }`}>
 
       <section className="flex flex-row items-start gap-20 justify-between w-full">
         <div className="flex flex-row items-center justify-center h-full gap-20">
-          <Image src={isScrolled ? "/logo_light.png" : "/logo_dark.png"} alt="logo" width={110} height={110}  />
+          <Image src={isScrolled ? "/logo_light.png" : "/logo_dark.png"} alt="logo" width={90} height={90} className=" ml-2 sm:ml-10"  />
           <nav className= {`hidden lg:flex gap-10 font-bold text-[1.2rem] ${isScrolled ? "text-[#ffffff]" : "text-[#263e57] "}`}>
               <Link className="hover:text-[#4c6cd3]" href="/">HEM</Link>
               <Link className="hover:text-[#4c6cd3]" href="/about">OM OSS</Link>
