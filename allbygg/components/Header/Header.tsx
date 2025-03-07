@@ -31,7 +31,8 @@ useEffect(() => {
           <nav className= {`hidden lg:flex gap-10 font-bold text-[1.2rem] ${isScrolled ? "text-[#ffffff]" : "text-[#263e57] "}`}>
               <Link className="hover:text-[#4c6cd3]" href="/">HEM</Link>
               <Link className="hover:text-[#4c6cd3]" href="/about">OM OSS</Link>
-              <Link className="hover:text-[#4c6cd3]" href="/services">TJÄNSTER</Link>
+              <Link className="hover:text-[#4c6cd3]" href="/offer">TJÄNSTER</Link>
+              <Link className="hover:text-[#4c6cd3]" href="/inspiration">INSPIRATION</Link>
               <Link className="hover:text-[#4c6cd3]" href="/contact">KONTAKT</Link>
           </nav>
         </div>
