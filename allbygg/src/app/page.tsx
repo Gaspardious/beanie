@@ -12,7 +12,7 @@ export default function Home() {
             <button className="bg-[#eeeeee] hover:scale-105 cursor-pointer text-[#263e90] font-bold py-2 px-4 rounded w-31 mr-10">Tjänster</button>
           </div>
         </div>
-      <Info BigText="Dags att renovera?" SmallText="You a good boy now!" ImageSrc="/paint.jpg"/>
+      <Info BigText="Dags att renovera?" SmallText="You a good boy now!" ImageSrc="/paint.jpg" BtnText="Kontakta oss"/>
       <Info BigText="Vi är ett steg bort!" SmallText="Svarar inom 24h!" ImageSrc="/drill.jpg" reverse/>
       <Info BigText="Dags att renovera?" SmallText="You a good boy now!" ImageSrc="/tools.jpg"/>
     </div>
