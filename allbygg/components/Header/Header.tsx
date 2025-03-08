@@ -4,6 +4,7 @@ import Image from "next/image"
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 
+
 const Header = () => {
 const [isScrolled, setIsScrolled] = useState(false)
 const pathname = usePathname()
@@ -58,11 +59,12 @@ useEffect(() => {
         <div className="flex flex-row items-center justify-center h-full">
           <Link href="/contact"><button className=" hidden sm:bg-gray-500 hover:bg-[#263e90] cursor-pointer text-white font-bold py-2 px-4 rounded mr-10 sm:block ">E-handel</button></Link>
           <Link href="/contact"><button className=" bg-[#263e57] hover:bg-[#263e90] cursor-pointer text-white font-bold py-2 px-4 rounded w-31 mr-10">Begär offert</button></Link>
-          <Image  src={isScrolled ? "/menu_light.svg" : "/menu_dark.svg"} alt="logo" width={25} height={25} className="mr-10 lg:hidden"/>
-
+          
+          
+          <Image src={isScrolled ? "/menu_light.svg" : "/menu_dark.svg"} alt="logo" width={25} height={25}  className=" cursor=pointer mr-10 lg:hidden"/>
+   
         </div>
       </section>
-
     </header>
   )
 }

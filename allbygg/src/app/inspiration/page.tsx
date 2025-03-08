@@ -5,7 +5,7 @@ import Reviews from '../../../components/Reviews/Reviews'
 const inspiration = () => {
   return (
     <div className='w-full relative '>
-      <div className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat bg-[url('/bath.jpg')]">
+      <div className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat bg-[url('/plan.jpg')]">
         <div className="absolute inset-0 bg-black opacity-50"></div>
         </div>
 

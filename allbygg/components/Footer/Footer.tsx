@@ -18,9 +18,12 @@ const Footer = () => {
         <div className=" flex flex-wrap items-start mt-10 justify-center gap-11 sm:gap-50">
           <section>
             <h2 className="text-white text-2xl font-bold mb-10">Om oss</h2>
-            <div className="max-w-[200px] sm:max-w-none mx-auto sm:mx-0">
+            <div className="flex flex-col gap-5 max-w-[200px] sm:max-w-none mx-auto sm:mx-0">
               <p className="text-white text-sm w-48">Vi är ett byggföretag som erbjuder tjänster inom bygg och renovering.</p>
+              <Link className="hover:text-[#4c6cd3]" href="/integritetspolicy">- Integritetspolicy</Link>
+              <Link className="hover:text-[#4c6cd3]" href="/cookiespolicy"> - Cookies</Link>
             </div>
+
           </section>
 
           <section>
