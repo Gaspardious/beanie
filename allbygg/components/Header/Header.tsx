@@ -3,7 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
-
+import MobileMenu from "../MobileMenu/MobileMenu"
 
 const Header = () => {
 const [isScrolled, setIsScrolled] = useState(false)
@@ -17,6 +17,10 @@ useEffect(() => {
       setIsScrolled(false);
     }
   };
+
+  
+
+
 
   window.addEventListener("scroll", onScrolling);
   return () => window.removeEventListener("scroll", onScrolling);
@@ -56,13 +60,13 @@ useEffect(() => {
             ))}
           </nav>
         </div>
-        <div className="flex flex-row items-center justify-center h-full">
-          <Link href="/contact"><button className=" hidden sm:bg-gray-500 hover:bg-[#263e90] cursor-pointer text-white font-bold py-2 px-4 rounded mr-10 sm:block ">E-handel</button></Link>
-          <Link href="/contact"><button className=" bg-[#263e57] hover:bg-[#263e90] cursor-pointer text-white font-bold py-2 px-4 rounded w-31 mr-10">Begär offert</button></Link>
+        <div className="flex flex-row items-center justify-center h-full gap-1">
+          <Link href="/contact"><button className=" hidden sm:bg-gray-500 hover:bg-[#263e90] cursor-pointer text-white w-full font-bold py-2 px-4 rounded mr-10 sm:block ">E-handel</button></Link>
+          <Link href="/contact"><button className=" bg-[#263e57] hover:bg-[#263e90] cursor-pointer text-white font-bold py-2 px-4 rounded w-31 mr-5">Begär offert</button></Link>
           
-          
-          <Image src={isScrolled ? "/menu_light.svg" : "/menu_dark.svg"} alt="logo" width={25} height={25}  className=" cursor=pointer mr-10 lg:hidden"/>
-   
+      
+{/*           <Image src={isScrolled ? "/menu_light.svg" : "/menu_dark.svg"} alt="logo" width={25} height={25}  className=" cursor=pointer mr-10 lg:hidden"/> */}
+          <MobileMenu />
         </div>
       </section>
     </header>
