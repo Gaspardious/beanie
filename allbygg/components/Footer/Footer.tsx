@@ -36,7 +36,7 @@ const Footer = () => {
           <section className="mt-10 sm:mt-0">
             <h2 className="text-white text-2xl font-bold mb-10">Navigation</h2>
             <nav className="flex gap-4 justify-center sm:justify-start flex-col">
-                <Link className="hover:text-[#4c6cd3]" href="/">HEM</Link>
+                <Link className="hover:text-[#4c6cd3] active:text-[#4c6cd3]" href="/">HEM</Link>
                 <Link className="hover:text-[#4c6cd3]" href="/about">OM OSS</Link>
                 <Link className="hover:text-[#4c6cd3]" href="/services">TJÄNSTER</Link>
                 <Link className="hover:text-[#4c6cd3]" href="/contact">KONTAKT</Link>
@@ -47,7 +47,7 @@ const Footer = () => {
         <hr className="border-white border-opacity-50 w-4/5 mx-auto mt-10 mb-10"/>
 
         <div className="flex flex-row items-center justify-center gap-1">
-        <Image src="/logo_light.png" alt="logo" width={70} height={70}  />
+         <Image src="/logo_light.png" alt="logo" width={70} height={70}  />
           <section>
             <p className="text-white text-sm">© 2025 Allbygg Trestad AB </p>
             <p className="text-white text-sm">All rights reserved </p>

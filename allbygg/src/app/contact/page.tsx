@@ -1,7 +1,7 @@
 
 import React from 'react'
 
-const contact = () => {
+const Contact = () => {
   return (
     <div className='w-full pb-10 bg-blue-50 relative '>
         <div className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat bg-[url('/tools.jpg')]">
@@ -27,4 +27,4 @@ const contact = () => {
   )
 }
 
-export default contact
+export default Contact

@@ -2,9 +2,11 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useState, useEffect } from "react"
+import { usePathname } from "next/navigation"
 
 const Header = () => {
 const [isScrolled, setIsScrolled] = useState(false)
+const pathname = usePathname()
 
 useEffect(() => {
   const onScrolling = () => {
@@ -21,19 +23,36 @@ useEffect(() => {
 
   return (
     <header 
-      className={`h-22 flex flex-col items-center justify-center sticky top-0 z-50 transition-all duration-300 ${
+      className={`h-[88px] flex flex-col items-center justify-center sticky top-0 z-50 transition-all duration-300 ${
       isScrolled ? "bg-black/50 backdrop-blur-md" : "bg-white"
     }`}>
 
       <section className="flex flex-row items-start gap-20 justify-between w-full">
         <div className="flex flex-row items-center justify-center h-full gap-20">
-          <Image src={isScrolled ? "/logo_light.png" : "/logo_dark.png"} alt="logo" width={90} height={90} className=" ml-2 sm:ml-10"  />
-          <nav className= {`hidden lg:flex gap-10 font-bold text-[1.2rem] ${isScrolled ? "text-[#ffffff]" : "text-[#263e57] "}`}>
-              <Link className="hover:text-[#4c6cd3]" href="/">HEM</Link>
-              <Link className="hover:text-[#4c6cd3]" href="/about">OM OSS</Link>
-              <Link className="hover:text-[#4c6cd3]" href="/offer">TJÄNSTER</Link>
-              <Link className="hover:text-[#4c6cd3]" href="/inspiration">INSPIRATION</Link>
-              <Link className="hover:text-[#4c6cd3]" href="/contact">KONTAKT</Link>
+         <Link href="/"><Image src={isScrolled ? "/logo_light.png" : "/logo_dark.png"} alt="logo" width={90} height={90} className=" ml-2 sm:ml-10"  />
+          </Link>
+
+          <nav className={`hidden lg:flex gap-10 font-bold text-[1.2rem] transition-all duration-300 ${
+            isScrolled ? "text-white" : "text-[#263e57]"
+          }`}>
+            {[
+              { name: "HEM", path: "/" },
+              { name: "OM OSS", path: "/about" },
+              { name: "TJÄNSTER", path: "/offer" },
+              { name: "INSPIRATION", path: "/inspiration" },
+              { name: "KONTAKT", path: "/contact" },
+            ].map((link) => (
+              <Link 
+                key={link.path} 
+                href={link.path}
+                className={`hover:text-[#4c6cd3] transition-all duration-300 ${
+                  pathname === link.path ? "text-[#4c6cd3]" : ""
+                }`}
+              >
+                {link.name}
+              </Link>
+              
+            ))}
           </nav>
         </div>
         <div className="flex flex-row items-center justify-center h-full">
