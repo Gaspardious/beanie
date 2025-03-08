@@ -4,19 +4,18 @@ import Image from "next/image"
 
 const Footer = () => {
     return (
-      <div className="w-full px-1 py-1 bg-[#263e57] sm:px-12" >
+      <div className="w-full px-1 py-1 bg-[#263e57] sm:px-12 border-t-3 border-white" >
          
-         <section className="flex flex-col items-center justify-center m-20">
-            <h2 className="text-white text-2xl font-bold mb-5">Följ oss</h2>
+         <section className="flex flex-col items-center justify-center m-8">
             <div className="flex gap-4 justify-center sm:justify-start">
-                  <Image src="/facebook.svg" alt="logo" width={50} height={50}  />
-                  <Image src="/instagram.svg" alt="logo" width={50} height={50}  />
+                  <Image src="/facebook.svg" alt="logo" width={30} height={30}  />
+                  <Image src="/instagram.svg" alt="logo" width={30} height={30}  />
               </div>
           </section>
           
-          <hr className="border-white border-opacity-50 w-4/5 mx-auto mt-10 mb-10"/>
+          <hr className="border-white border-opacity-50 w-4/5 mx-auto mt-0 mb-10"/>
 
-        <div className=" flex flex-wrap items-start mt-15 justify-center gap-11 sm:gap-50">
+        <div className=" flex flex-wrap items-start mt-10 justify-center gap-11 sm:gap-50">
           <section>
             <h2 className="text-white text-2xl font-bold mb-10">Om oss</h2>
             <div className="max-w-[200px] sm:max-w-none mx-auto sm:mx-0">
@@ -38,7 +37,7 @@ const Footer = () => {
             <nav className="flex gap-4 justify-center sm:justify-start flex-col">
                 <Link className="hover:text-[#4c6cd3] active:text-[#4c6cd3]" href="/">HEM</Link>
                 <Link className="hover:text-[#4c6cd3]" href="/about">OM OSS</Link>
-                <Link className="hover:text-[#4c6cd3]" href="/services">TJÄNSTER</Link>
+                <Link className="hover:text-[#4c6cd3]" href="/offer">TJÄNSTER</Link>
                 <Link className="hover:text-[#4c6cd3]" href="/contact">KONTAKT</Link>
             </nav>
           </section>

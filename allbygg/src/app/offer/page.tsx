@@ -11,7 +11,7 @@ const Offer = () => {
 
         <section className=" bg-white flex flex-col items-center justify-center h-full text-center">
             <h1 className="text-sm sm:text-2xl font-extralight pt-10 text-gray-600 ">ALLBYGG TRESTAD AB</h1>
-            <h2 className="text-2xl sm:text-3xl p-10 font-bold text-gray-600 m-10 w-full sm:w-3/4"> Vi erbjuder tjänster inom bygg och renovering.
+            <h2 className="text-2xl sm:text-3xl p-10 font-bold text-gray-600 m-10 w-full sm:w-"> Vi erbjuder tjänster inom bygg och renovering.
               Vi har lång erfarenhet och kan hjälpa dig med allt från badrum, köksrenovering, altan, garage till nybyggnation av hus. <br /> <br /> 
               Kontakta oss för ett förtsta - förutsättningslöst - möte. 👷🏻
             </h2>
@@ -21,19 +21,19 @@ const Offer = () => {
         <div className='w-full p-5 sm:p-20 bg-blue-50 relative '>
         <Info BigText="Badrum" SmallText="
         Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Repellendus beatae asperiores aut blanditiis, ratione ipsam ex, ad error repellat," 
+        Repellendus beatae ad error repellat," 
         ImageSrc="/paint.jpg" BtnText="Kontakta oss"/>
         <Info BigText="Ny altan?" SmallText="
         Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Repellendus beatae asperiores aut blanditiis, ratione ipsam ex, ad error repellat," 
+        Repellendus beatae asperiore, ad error repellat," 
         reverse ImageSrc="/paint.jpg" BtnText="Kontakta oss"/>
         <Info BigText="Dags att renovera?" SmallText="
         Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Repellendus beatae asperiores aut blanditiis, ratione ipsam ex, ad error repellat." 
+        Repellendus beatae asperiores a, ad error repellat." 
         ImageSrc="/paint.jpg" BtnText="Kontakta oss"/>
         <Info BigText="Vi kan bygga!" reverse SmallText="
         Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Repellendus beatae asperiores aut blanditiis, ratione ipsam ex, ad error repellat," 
+        , ratione ipsam ex, ad error repellat," 
         ImageSrc="/paint.jpg" BtnText="Kontakta oss"/>
       </div>
     </div>
