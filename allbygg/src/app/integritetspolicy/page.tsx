@@ -18,18 +18,17 @@ const Integritetspolicy = () => {
         I policyn beskriver vi varför vi behandlar dina personuppgifter, vilka personuppgifter vi behandlar, vilken laglig grund vi stödjer behandlingen på och hur länge uppgifterna sparas. Vi beskriver även hur du kan påverka behandlingen genom att utöva dina rättigheter. Vi ger dig även information var du ska vända dig om du inte är nöjd med vår hantering. Det är viktigt att du tar del av och förstår integritetspolicyn. Du är alltid välkommen att kontakta oss vid eventuella frågor.
         </p>
 
-        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'>
+        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'><strong>Vi går att nå på följande sätt:</strong> <br /> <br />
+        </p>
 
-        <strong>Vi går att nå på följande sätt:</strong> <br /> <br />
-
-        <address>
+        <address className='text-black w-3/4 sm:text-lg sm:w-2/4'>
         Allbygg Trestad AB <br />
         Lövvägen 4 <br />
         468 30 Vargön <br />
         073-500 27 33 <br />
         info@allbygg.se <br />
       </address> 
-        </p>
+
 
         <p className='text-black w-3/4 sm:text-lg sm:w-2/4'>
         <h2 className='text-2xl font-bold'>Vad förändringen innebär för dig</h2>
@@ -142,8 +141,9 @@ const Integritetspolicy = () => {
 
         <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>14. Kontaktuppgifter</h2>
         <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> Företaget är personuppgiftsansvarig och ansvarar för de personuppgifter som behandlas under varumärket Företaget. Vi bestämmer ändamålen för behandlingen och hur den går till. Vi bestämmer även hur personuppgifter behandlas när vi använder oss av underleverantörer.<br /> <br />
+        </p>
 
-        <address>
+        <address className='text-black w-3/4 sm:text-lg sm:w-2/4'>
         Allbygg Trestad AB <br />
         Lövvägen 4 <br />
         468 30 Vargön <br />
@@ -151,22 +151,8 @@ const Integritetspolicy = () => {
         info@allbygg.se <br />
       </address> 
       
-        </p>
-
-
-
-
-
-
-
-
         </div>
       </div>
-
-
-
-      
-  
   )
 }
 
