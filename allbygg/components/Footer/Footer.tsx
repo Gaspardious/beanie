@@ -15,29 +15,27 @@ const Footer = () => {
           
           <hr className="border-white border-opacity-50 w-4/5 mx-auto mt-0 mb-10"/>
 
-        <div className=" flex flex-wrap items-start mt-10 justify-center gap-11 sm:gap-50">
+        <div className=" flex flex-wrap items-start mt-10 justify-center gap-5 sm:gap-40">
           <section>
-            <h2 className="text-white text-2xl font-bold mb-10">Om oss</h2>
-            <div className="flex flex-col gap-5 max-w-[200px] sm:max-w-none mx-auto sm:mx-0">
-              <p className="text-white text-sm w-48">Vi är ett byggföretag som erbjuder tjänster inom bygg och renovering.</p>
+            <h2 className="text-white text-2xl font-bold mb-5">Om oss</h2>
+            <div className="flex flex-col gap-2 max-w-[200px] sm:max-w-none mx-auto sm:mx-0">
+              <p className="text-white text-sm w-48 pb-3">Vi är ett byggföretag som erbjuder tjänster inom bygg och renovering.</p>
               <Link className="hover:text-[#4c6cd3]" href="/integritetspolicy">- Integritetspolicy</Link>
               <Link className="hover:text-[#4c6cd3]" href="/cookiespolicy"> - Cookies</Link>
             </div>
-
           </section>
 
           <section>
-            <h2 className="text-white text-2xl font-bold mb-10">Kontakta oss</h2>
+            <h2 className="text-white text-2xl font-bold mb-5">Kontakta oss</h2>
             <div className="max-w-[200px] sm:max-w-none mx-auto sm:mx-0">
                 <p className="text-white text-sm"><strong>Adress:</strong> 123 45 Stockholm</p>
                 <p className="text-white text-sm"><strong>Telefon:</strong> +46 123 456 789</p>
               </div>
           </section>
 
-
-          <section className="mt-10 sm:mt-0">
-            <h2 className="text-white text-2xl font-bold mb-10">Navigation</h2>
-            <nav className="flex gap-4 justify-center sm:justify-start flex-col">
+          <section className=" hidden mt-10 sm:mt-0 sm:block">
+            <h2 className="text-white text-2xl font-bold mb-5">Navigation</h2>
+            <nav className="flex gap-2 justify-center sm:justify-start flex-col">
                 <Link className="hover:text-[#4c6cd3] active:text-[#4c6cd3]" href="/">HEM</Link>
                 <Link className="hover:text-[#4c6cd3]" href="/about">OM OSS</Link>
                 <Link className="hover:text-[#4c6cd3]" href="/offer">TJÄNSTER</Link>

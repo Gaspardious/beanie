@@ -79,8 +79,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ open, setOpen}) => {
         <p className="self-start close_btn cursor-pointer text-xl" onClick={() => setOpen(false)}>
           ✖
         </p>
-           <Image src="/logo_light.png"  alt="logo" width={100} height={90} className="self-center mb-20" />
-        <div className="flex flex-col gap-5">
+           <Image src="/logo_light.png"  alt="logo" width={100} height={90} className="self-center mb-10" />
+        <div className="flex flex-col gap-2">
         {links.map((link, index) => (
           <motion.li key={index} className="li_container m-3 font-bold text-lg text-center uppercase">
             <Link href={link.path} onClick={() => setOpen(false)} className="hover:text-blue-300">
