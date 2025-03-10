@@ -7,7 +7,7 @@ const Contact = () => {
         <div className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat bg-[url('/tools.jpg')]">
         <div className="absolute inset-0 bg-black opacity-50"></div>
         </div>
-      <h1 className="text-4xl mt-10 sm:text-6xl font-extrabold text-white absolute top-20 left-1/2 transform -translate-x-1/2">Kontakta oss</h1>
+      <h1 className="text-3xl mt-10 sm:text-6xl font-extrabold text-white absolute top-20 left-1/2 transform -translate-x-1/2">Kontakta oss</h1>
         <form action="">
           <div className="flex flex-col items-center justify-center h-full gap-10">
             <p className="text-[#263e90] text-center p-5">Ring eller maila oss om du vill du ha offert eller rådgivning om vad som skulle passa dig och ditt projekt bäst. <br /> <br /> Använd gärna formuläret nedan så  svarar vi så fort vi kan.</p>

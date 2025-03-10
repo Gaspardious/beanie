@@ -5,7 +5,7 @@ const Shop = () => {
         <div className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat bg-[url('/tools.jpg')]">
         <div className="absolute inset-0 bg-black opacity-50"></div>
         </div>
-      <h1 className="text-4xl mt-10 sm:text-6xl font-extrabold text-white absolute top-20 left-1/2 transform -translate-x-1/2">Shop</h1>
+      <h1 className="text-3xl mt-10 sm:text-6xl font-extrabold text-white absolute top-20 left-1/2 transform -translate-x-1/2">Shop</h1>
         <form action="">
           <div className="flex flex-col items-center justify-center h-full gap-10">
             <p className="text-[#263e90] text-center p-5">Vår webbshop är under konstruktion 👷🏼 <br /> <br /> Tveka inte att kontakta oss om du har frågor eller vill beställa något.</p>

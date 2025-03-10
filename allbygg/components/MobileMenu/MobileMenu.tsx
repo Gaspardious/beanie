@@ -17,7 +17,7 @@ interface MobileMenuProps {
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ open, setOpen}) => {
   const [scope, animate] = useAnimate();
-  const staggerList = stagger(0.15, { startDelay: 0.25 });
+  const staggerList = stagger(0.07, { startDelay: 0.10 });
 
   const links: NavLink[] = [
     { label: "Hem", path: "/" },

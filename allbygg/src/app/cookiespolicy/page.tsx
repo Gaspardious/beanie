@@ -7,7 +7,7 @@ const Cookiespolicy = () => {
     <div className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat bg-[url('/cookies.jpg')]">
     <div className="absolute inset-0 bg-black opacity-50"></div>
     </div>
-  <h1 className="text-4xl h-screen mt-5 sm:text-6xl font-extrabold text-white absolute top-20 left-1/2 transform -translate-x-1/2">Cookies</h1>
+  <h1 className="text-3xl h-screen mt-5 sm:text-6xl font-extrabold text-white absolute top-20 left-1/2 transform -translate-x-1/2">Cookies</h1>
   <p className="text-1xl w-5/6 sm:text-2xl text-center h-screen mt-15 sm:mt-20 font-extrabold text-white absolute top-30 left-1/2 transform -translate-x-1/2">Här kan du ta del om vilka cookies vi använder och hur vi hanterar dessa.</p>
        
  

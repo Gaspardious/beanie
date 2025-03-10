@@ -17,7 +17,7 @@ const Offer = () => {
             </h2>
         </section>
 
-        <h1 className="text-4xl h-screen mt-5 sm:text-6xl font-extrabold text-white absolute top-20 left-1/2 transform -translate-x-1/2">Tjänster</h1>
+        <h1 className="text-3xl h-screen mt-5 sm:text-6xl font-extrabold text-white absolute top-20 left-1/2 transform -translate-x-1/2">Tjänster</h1>
         <div className='w-full p-5 sm:p-20 bg-blue-50 relative '>
         <Info BigText="Badrum" SmallText="
         Lorem ipsum dolor sit amet consectetur adipisicing elit.

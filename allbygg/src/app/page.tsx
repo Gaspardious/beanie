@@ -1,5 +1,6 @@
 import Info from "../../components/Info/Info";
 import Link from "next/link";
+import Reviews from "../../components/Reviews/Reviews";
 
 
 export default function Home() {
@@ -15,6 +16,10 @@ export default function Home() {
         </div>
       <Info BigText="Dags att renovera?" SmallText="You a good boy now!" ImageSrc="/paint.jpg" BtnText="Kontakta oss"/>
       <Info BigText="Vi är ett steg bort!" SmallText="Svarar inom 24h!" ImageSrc="/drill.jpg" reverse/>
+      <div className="flex flex-wrap justify-center gap-2">
+      <Reviews customerNumber='Kund #56' customerName="Johnny B Carlsson" heading='Nöjd!!' text='Mitt badrum blev så himla fint. Jag är säg glad och lycklig!'  />
+      <Reviews customerNumber='Kund #56' customerName="Johnny B Carlsson" heading='Nöjd!!' text='Mitt badrum blev så himla fint. Jag är säg glad och lycklig!'  />
+      </div>
       <Info BigText="Dags att renovera?" SmallText="You a good boy now!" ImageSrc="/tools.jpg"/>
     </div>
   );
