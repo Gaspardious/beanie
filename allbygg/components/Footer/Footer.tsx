@@ -51,15 +51,16 @@ const Footer = () => {
           <section>
             <p className="text-white text-sm">© 2025 Allbygg Trestad AB </p>
             <p className="text-white text-sm">All rights reserved </p>
+            <p className="text-white text-sm">Org.nr 123456789 </p>
           </section>
         </div>
 
         <div className=" flex flex-col items-center justify-center pb-3 pt-10  text-white text-center">
           <p className="text-sm mt-2 flex flex-wrap items-center justify-center gap-1">
             Gillar du hemsidan? Skaffa en egen! →
-            <Link href="/admin" className="text-[#7fc7ff] hover:underline">
-              www.gaspar.com
-            </Link>
+          <Link href="https://www.gaspardev.com" className="text-[#7fc7ff] hover:underline">
+            www.gaspardev.com
+          </Link>
           </p>
         </div>
       </div>
