@@ -27,9 +27,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Allbygg Trestad AB",
-  description: "Allbygg Trestad AB är ett byggföretag i Trollhättan som utför alla typer av byggnationer.",
-  icons: "./hammer.svg",
+  title: "General Store",
+  description: "A general store for all your needs",
+  icons: "clock.svg",
 };
 
 export default function RootLayout({

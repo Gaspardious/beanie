@@ -20,13 +20,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ open, setOpen}) => {
   const staggerList = stagger(0.07, { startDelay: 0.10 });
 
   const links: NavLink[] = [
-    { label: "Hem", path: "/" },
-    { label: "Om oss", path: "/about" },
-    { label: "Kontakt", path: "/contact" },
-    { label: "Tjänster", path: "/offer" },
-    { label: "Inspiration", path: "/inspiration" },
+    { label: "Home", path: "/" },
+    { label: "Shop", path: "/shop" },
+    { label: "About", path: "/about" },
+    { label: "Contact", path: "/contact" },
     { label: "Cookies", path: "/cookiespolicy" },
-    { label: "Integritetspolicy", path: "/integritetspolicy" },
+    { label: "Integrity", path: "/integritetspolicy" },
   ];
 
   useEffect(() => {
@@ -64,10 +63,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ open, setOpen}) => {
     <div className="container" ref={scope}>
       {/* Mobile Menu Button */}
       <motion.button
-        className="p-2 mr-2 bg-[#263e57] text-white rounded-md sm:hidden z-40"
+        className="p-2 w-10 mr-2 bg-[#1e1e1e] text-white rounded-md sm:hidden z-40 cursor-pointer"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        whileHover={{ scale: 1.1 }}
+        whileHover={{ scale: 1.1, rotate: 90 }}
         whileTap={{ scale: 0.8 }}
         onClick={() => setOpen(!open)}
       >
@@ -75,11 +74,11 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ open, setOpen}) => {
       </motion.button>
 
       {/* Sidebar Menu */}
-      <ul className=" flex flex-col justify-start items-center ul_container fixed top-0 left-0 h-full w-64 bg-gray-800 text-white p-5 shadow-lg z-40">
+      <ul className=" flex flex-col justify-start items-center ul_container fixed top-0 left-0 h-full w-64 bg-black/90 text-white p-5 shadow-lg z-40">
         <p className="self-start close_btn cursor-pointer text-xl" onClick={() => setOpen(false)}>
           ✖
         </p>
-           <Image src="/logo_light.png"  alt="logo" width={100} height={90} className="self-center mb-10" />
+           <Image src="/tiger_white.png"  alt="logo" width={100} height={90} className="self-center mb-10" />
         <div className="flex flex-col gap-2">
         {links.map((link, index) => (
           <motion.li key={index} className="li_container m-3 font-bold text-lg text-center uppercase">
