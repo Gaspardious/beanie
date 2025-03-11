@@ -40,7 +40,7 @@ const Header = () => {
            <Image src={isScrolled ? "/logo_light.png" : "/logo_dark.png"} alt="logo" width={90} height={90} className=" ml-2 sm:ml-10" />
          </Link>
 
-          <nav className={`hidden lg:flex gap-10 font-bold text-[1.2rem] duration-100 ${
+          <nav className={`hidden lg:flex gap-6 font-bold text-[1.2rem] duration-100 ${
             isScrolled ? "text-white" : "text-[#263e57]"
           }`}>
             {[
@@ -53,7 +53,7 @@ const Header = () => {
               <Link 
                 key={link.path} 
                 href={link.path}
-                className={`hover:text-[#4c6cd3] transition-all duration-300 ${
+                className={`hover:text-[#4c6cd3] transition-all duration-300 font-oswald ${
                   pathname === link.path ? "text-[#4c6cd3]" : ""
                 }`}
               >
@@ -63,8 +63,8 @@ const Header = () => {
           </nav>
         </div>
         <div className="flex flex-row items-center justify-center h-full gap-1">
-          <Link href="/shop"><button className="hidden sm:bg-gray-500 hover:bg-[#263e90] cursor-pointer text-white w-full font-bold py-2 px-4 rounded mr-10 sm:block">E-handel</button></Link>
-          <Link href="/contact"><button className="bg-[#263e57] hover:bg-[#263e90] cursor-pointer text-white font-bold py-2 px-4 rounded w-31 mr-5">Begär offert</button></Link>
+          <Link href="/shop"><button className="hidden sm:bg-gray-500 hover:bg-[#263e90] cursor-pointer text-white w-full font-bold py-2 px-4 rounded font-oswald mr-10 sm:block">E-handel</button></Link>
+          <Link href="/contact"><button className="bg-[#263e57] hover:bg-[#263e90] cursor-pointer text-white font-bold py-2 px-4 rounded w-31 font-oswald mr-5">Begär offert</button></Link>
           
           <MobileMenu open={menuOpen} setOpen={setMenuOpen} />
         </div>

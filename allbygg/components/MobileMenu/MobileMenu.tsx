@@ -83,7 +83,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ open, setOpen}) => {
         <div className="flex flex-col gap-2">
         {links.map((link, index) => (
           <motion.li key={index} className="li_container m-3 font-bold text-lg text-center uppercase">
-            <Link href={link.path} onClick={() => setOpen(false)} className="hover:text-blue-300">
+            <Link href={link.path} onClick={() => setOpen(false)} className="hover:text-blue-300 font-oswald">
               {link.label}
             </Link>
           </motion.li>
