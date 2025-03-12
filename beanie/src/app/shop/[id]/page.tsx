@@ -29,8 +29,7 @@ const ProductPage = () => {
         <div className="flex flex-col gap-4">
             <h1 className="text-3xl font-bold text-black">{selectedProduct.name}</h1>
             <p className="text-black">Description: </p>
-            <p className="text-black">{selectedProduct.description}</p>
-            <p className="text-black">Price: {selectedProduct.price} {selectedProduct.currency}</p>
+            <p className="text-black">Price: </p>
             <button className="px-4 py-2 bg-black rounded" onClick={() => alert("Added to cart!")}>Add to Cart</button>
         </div>
       </div>
