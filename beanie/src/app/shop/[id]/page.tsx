@@ -24,9 +24,15 @@ const ProductPage = () => {
         ← Back to Shop
       </button>
 
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center gap-6 lg:flex-row">
         <Image src={selectedProduct.thumbnail_url} alt={selectedProduct.name} width={500} height={500} className="w-auto h-auto object-cover rounded mb-5" />
-        <h1 className="text-3xl font-bold">{selectedProduct.name}</h1>
+        <div className="flex flex-col gap-4">
+            <h1 className="text-3xl font-bold text-black">{selectedProduct.name}</h1>
+            <p className="text-black">Description: </p>
+            <p className="text-black">{selectedProduct.description}</p>
+            <p className="text-black">Price: {selectedProduct.price} {selectedProduct.currency}</p>
+            <button className="px-4 py-2 bg-black rounded" onClick={() => alert("Added to cart!")}>Add to Cart</button>
+        </div>
       </div>
     </div>
   );
