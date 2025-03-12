@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import { ProductProvider } from "../app/context/ProductContext";
+import { Analytics } from '@vercel/analytics/next';
+
 
 
 const nunitoSans = Nunito_Sans({
@@ -47,6 +49,7 @@ export default function RootLayout({
       >
         <Header />
         {children}
+        <Analytics />
         <Footer />
       </body>
     </html>
