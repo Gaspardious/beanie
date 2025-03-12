@@ -24,7 +24,7 @@ const Info: React.FC<InfoProps> = ({ BigText, ImageSrc, BtnText, SmallText, reve
               <p className=' text-sm sm:text-2xl'>{SmallText}</p>
               {BtnText && ( 
               <Link href="/contact">
-                <button className="bg-[#263e57] hover:bg-[#263e90] cursor-pointer text-white font-bold py-2 px-4 rounded w-auto mt-10">
+                <button className="bg-[#1c1c1c] hover:bg-[#263e90] cursor-pointer text-white font-bold py-2 px-4 rounded w-auto mt-10">
                   {BtnText}
                 </button>
               </Link>

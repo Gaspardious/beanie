@@ -29,7 +29,7 @@ const Header = () => {
 
   return (
 <header 
-  className={`h-[88px] flex flex-col items-center justify-center sticky top-0 z-50 duration-100 ${
+  className={`h-[95px] flex flex-col items-center justify-center sticky top-0 z-50  ${
     isScrolled && !menuOpen ? "bg-black/50 backdrop-blur-md" : "bg-white"
   }`}
 >
@@ -37,24 +37,23 @@ const Header = () => {
       <section className="flex flex-row items-start gap-20 justify-between w-full">
         <div className="flex flex-row items-center justify-center h-full gap-20">
          <Link href="/">
-           <Image src={isScrolled ? "/logo_light.png" : "/logo_dark.png"} alt="logo" width={90} height={90} className=" ml-2 sm:ml-10" />
+           <Image src={isScrolled ? "/tiger_white.png" : "/tiger_black.png"} alt="logo" width={110} height={110} className=" ml-2 sm:ml-10" />
          </Link>
 
-          <nav className={`hidden lg:flex gap-6 font-bold text-[1.2rem] duration-100 ${
-            isScrolled ? "text-white" : "text-[#263e57]"
+          <nav className={`hidden sm:flex gap-8 font-bold text-[1.2rem] ${
+            isScrolled ? "text-white" : "text-[#1c1c1c]"
           }`}>
             {[
-              { name: "HEM", path: "/" },
-              { name: "OM OSS", path: "/about" },
-              { name: "TJÄNSTER", path: "/offer" },
-              { name: "INSPIRATION", path: "/inspiration" },
-              { name: "KONTAKT", path: "/contact" },
+              { name: "HOME", path: "/" },
+              { name: "SHOP", path: "/shop" },
+              { name: "ABOUT", path: "/about" },
+              { name: "CONTACT", path: "/contact" },
             ].map((link) => (
               <Link 
                 key={link.path} 
                 href={link.path}
-                className={`hover:text-[#4c6cd3] transition-all duration-300 font-oswald ${
-                  pathname === link.path ? "text-[#4c6cd3]" : ""
+                className={`hover:text-[#ff8b07] transition-all duration-300 font-oswald ${
+                  pathname === link.path ? "text-[#ff8b07]" : ""
                 }`}
               >
                 {link.name}
@@ -62,10 +61,7 @@ const Header = () => {
             ))}
           </nav>
         </div>
-        <div className="flex flex-row items-center justify-center h-full gap-1">
-          <Link href="/shop"><button className="hidden sm:bg-gray-500 hover:bg-[#263e90] cursor-pointer text-white w-full font-bold py-2 px-4 rounded font-oswald mr-10 sm:block">E-handel</button></Link>
-          <Link href="/contact"><button className="bg-[#263e57] hover:bg-[#263e90] cursor-pointer text-white font-bold py-2 px-4 rounded w-31 font-oswald mr-5">Begär offert</button></Link>
-          
+        <div className="flex flex-row items-center justify-center h-full gap-1">          
           <MobileMenu open={menuOpen} setOpen={setMenuOpen} />
         </div>
       </section>
