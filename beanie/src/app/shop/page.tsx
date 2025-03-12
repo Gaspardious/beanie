@@ -1,28 +1,68 @@
+"use client";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useProduct } from "../context/ProductContext";
+import Image from "next/image";
 
 const Shop = () => {
-  return (
-    <div className='w-full pb-10 bg-blue-50 relative '>
-        <div className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat bg-[url('/tools.jpg')]">
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        </div>
-      <h1 className="text-3xl mt-10 sm:text-6xl font-extrabold text-white absolute top-20 left-1/2 transform -translate-x-1/2">Shop</h1>
-        <form action="">
-          <div className="flex flex-col items-center justify-center h-full gap-10">
-            <p className="text-[#263e90] text-center p-5">Vår webbshop är under konstruktion 👷🏼 <br /> <br /> Tveka inte att kontakta oss om du har frågor eller vill beställa något.</p>
-            <div className="flex flex-col items-center justify-center h-full gap-10">
-              <input required type="text" placeholder="Namn*" className="w-80 h-10 text-black  bg-white placeholder:text-[#263e90] border-2 border-[#263e90] rounded pl-2"/>
-              <input required type="email" placeholder="Email*" className="w-80 h-10 text-black  bg-white placeholder:text-[#263e90] border-2 border-[#263e90] rounded pl-2"/>
-              <input required type="text" placeholder="Ämne*" className="w-80 h-10 text-black  bg-white placeholder:text-[#263e90] border-2 border-[#263e90] rounded pl-2"/>
-              <textarea required minLength={50} name="message" id="message" cols={30} rows={10} placeholder="Meddelande*" className="w-80 h-40 text-black bg-white placeholder:text-[#263e90] border-2 border-[#263e90] rounded pl-2"></textarea>
-              <button className="bg-[#263e90] hover:bg-[#263e57] cursor-pointer text-white font-bold py-2 px-4 rounded w-31">Skicka</button>
-            </div>
-          </div>
-          <h2 className="text-[#263e90] text-center mt-10 pb-5">Vill du nå oss på telefon istället?</h2>
-          <p className="text-[#263e90] text-center"><strong>VD:</strong> Emin Kahirman </p>
-          <p className="text-[#263e90] text-center"><strong>Telefon:</strong> +46 123 456 789</p>
-        </form>
-    </div>
-  )
-}
+  const [products, setProducts] = useState<{ id: number; name: string; thumbnail_url: string; external_id: string }[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
+  const { setSelectedProduct } = useProduct();
 
-export default Shop
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("/api/products");
+        if (!response.ok) throw new Error("Failed to fetch products");
+
+        const data = await response.json();
+        console.log("Fetched Products:", data);
+        setProducts(data.map((product: { id: number; name: string; thumbnail_url: string; external_id?: string }) => ({
+          ...product,
+          external_id: product.external_id || ""
+        })));
+      } catch (err) {
+        console.error(err);
+        setError("Failed to load products");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  return (
+    <div className="w-full pb-10 bg-blue-50 relative">
+      <h1 className="text-3xl mt-10 sm:text-6xl font-extrabold text-black text-center">
+        Shop
+      </h1>
+
+      <div className="container mx-auto p-5 mt-20">
+        {loading && <p>Loading products...</p>}
+        {error && <p className="text-red-500">{error}</p>}
+        {!loading && !error && (
+          <ul className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+            {products.map((product) => (
+              <li
+                key={product.id}
+                className="p-4 border border-gray-300 rounded shadow bg-white flex flex-col items-center cursor-pointer"
+                onClick={() => {
+                  setSelectedProduct(product);
+                  router.push(`/shop/${product.id}`); // Navigate to product page
+                }}
+              >
+                <Image src={product.thumbnail_url} alt={product.name} width={500} height={500} className="w-auto h-auto object-cover rounded mb-2" />
+                <h2 className="text-lg font-bold text-center text-black">{product.name}</h2>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Shop;

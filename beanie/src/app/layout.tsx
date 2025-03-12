@@ -3,6 +3,8 @@ import { Geist, Geist_Mono, Oswald, Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import { ProductProvider } from "../app/context/ProductContext";
+
 
 const nunitoSans = Nunito_Sans({
   variable: "--font-nunito-sans",
@@ -38,6 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ProductProvider>
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${nunitoSans.variable} ${oswald.variable}  antialiased`}
@@ -47,5 +50,6 @@ export default function RootLayout({
         <Footer />
       </body>
     </html>
+    </ProductProvider>
   );
 }

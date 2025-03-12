@@ -1,5 +1,3 @@
-"use client";
-
 import { motion, stagger, useAnimate } from "framer-motion";
 import { useEffect } from "react";
 import Link from "next/link";
@@ -78,7 +76,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ open, setOpen}) => {
         <p className="self-start close_btn cursor-pointer text-xl" onClick={() => setOpen(false)}>
           ✖
         </p>
-           <Image src="/tiger_white.png"  alt="logo" width={100} height={90} className="self-center mb-10" />
+           <Image src="/tiger_white.png"  alt="logo" width={100} height={100} className="self-center mb-10" />
         <div className="flex flex-col gap-2">
         {links.map((link, index) => (
           <motion.li key={index} className="li_container m-3 font-bold text-lg text-center uppercase">
