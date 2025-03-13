@@ -58,7 +58,7 @@ const Footer = () => {
         <div className=" flex flex-col items-center justify-center pb-3 pt-10  text-white text-center">
           <p className="text-sm mt-2 flex flex-wrap items-center justify-center gap-1">
             Like this website? Get in touch →
-          <Link href="https://www.gaspardev.com" className="text-[#7fc7ff] hover:underline">
+          <Link href="https://www.gaspardev.com" className="text-[#ff8b07] hover:underline">
             www.gaspardev.com
           </Link>
           </p>

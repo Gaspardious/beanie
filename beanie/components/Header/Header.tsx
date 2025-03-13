@@ -61,9 +61,14 @@ const Header = () => {
             ))}
           </nav>
         </div>
-        <div className="flex flex-row items-center justify-center h-full gap-1">          
+        <div className="flex flex-row items-center justify-center h-full gap-4">    
+          <Image src={isScrolled ? "/cart_white.svg" : "/cart_black.svg"} alt="cart" width={40} height={50} className="ml-2 sm:ml-10" />
           <MobileMenu open={menuOpen} setOpen={setMenuOpen} />
         </div>
+        
+
+         
+
       </section>
       {menuOpen && (
         <div 
