@@ -4,10 +4,12 @@ import Image from "next/image"
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 import MobileMenu from "../MobileMenu/MobileMenu"
+import Cart from "../Cart/Cart"
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [menuCart, setCartOpen] = useState(false);
   const pathname = usePathname();
 
    useEffect(() => {
@@ -61,14 +63,14 @@ const Header = () => {
             ))}
           </nav>
         </div>
-        <div className="flex flex-row items-center justify-center h-full gap-4">    
-          <Image src={isScrolled ? "/cart_white.svg" : "/cart_black.svg"} alt="cart" width={40} height={50} className="ml-2 sm:ml-10" />
+        <div className="flex flex-row items-center justify-center h-full gap-0">    
+          <Cart open={menuCart} setOpen={setCartOpen} />
           <MobileMenu open={menuOpen} setOpen={setMenuOpen} />
         </div>
         
 
          
-
+   
       </section>
       {menuOpen && (
         <div 

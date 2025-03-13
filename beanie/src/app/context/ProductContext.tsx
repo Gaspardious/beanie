@@ -9,17 +9,28 @@ type Product = {
 };
 
 type ProductContextType = {
-  selectedProduct: Product | null;
-  setSelectedProduct: (product: Product) => void;
+  selectedProducts: Product[]; // ✅ Now an array
+  addProduct: (product: Product) => void;
+  removeProduct: (productId: number) => void;
 };
 
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
 
 export function ProductProvider({ children }: { children: ReactNode }) {
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [selectedProducts, setSelectedProducts] = useState<Product[]>([]); // ✅ Use array
+
+  // ✅ Add a product to the cart
+  const addProduct = (product: Product) => {
+    setSelectedProducts((prev) => [...prev, product]);
+  };
+
+  // ✅ Remove a product from the cart
+  const removeProduct = (productId: number) => {
+    setSelectedProducts((prev) => prev.filter((product) => product.id !== productId));
+  };
 
   return (
-    <ProductContext.Provider value={{ selectedProduct, setSelectedProduct }}>
+    <ProductContext.Provider value={{ selectedProducts, addProduct, removeProduct }}>
       {children}
     </ProductContext.Provider>
   );
