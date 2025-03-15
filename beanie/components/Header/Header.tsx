@@ -33,14 +33,18 @@ const Header = () => {
 
   return (
 <header 
-  className={`h-[95px] flex flex-col items-center justify-center sticky top-0 z-50  ${
+  className={`h-[95px] flex items-center sticky top-0 z-50  ${
     isScrolled && !menuOpen ? "bg-black/50 backdrop-blur-md" : "bg-white"
   }`}
 >
 
-      <section className="flex flex-row items-start gap-20 justify-between w-full">
-        <div className="flex flex-row items-center justify-center h-full gap-20">
-         <Link href="/">
+      <section className="flex flex-row items-center justify-between w-full">
+
+        <div className="flex flex-row items-center justify-center h-full ml-5">    
+          <MobileMenu open={menuOpen} setOpen={setMenuOpen} />
+        </div>
+
+        <Link href="/">
            <Image src={isScrolled ? "/tiger_white.png" : "/tiger_black.png"} alt="logo" width={110} height={110} className=" ml-2 sm:ml-10" />
          </Link>
 
@@ -64,12 +68,15 @@ const Header = () => {
               </Link>
             ))}
           </nav>
-        </div>
+
+
+
         <div className="flex flex-row items-center justify-center h-full gap-0">    
           <Cart open={menuCart} setOpen={setCartOpen} />
-          <MobileMenu open={menuOpen} setOpen={setMenuOpen} />
         </div>
       </section>
+
+
       {(menuOpen || menuCart) && (
         <div 
           className="bg-black/50 fixed top-0 left-0 w-screen h-screen" 
