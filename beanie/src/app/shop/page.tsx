@@ -11,9 +11,14 @@ const Shop = () => {
   const router = useRouter();
   const { setSingleProduct } = useProduct();
 
-  const handleProductClick = (Product: { id: number; name: string; thumbnail_url: string; external_id: string, description: string, price: number }) => {
-    setSingleProduct(Product);
-    router.push(`/shop/${Product.id}`);
+  const handleProductClick = (product: { id: number; name: string; thumbnail_url: string; external_id: string; description: string; price: number }) => {
+    setSingleProduct({
+      ...product,
+      cartItemId: crypto.randomUUID(), 
+      quantity: 1,
+    });
+  
+    router.push(`/shop/${product.id}`);
   };
 
   useEffect(() => {
