@@ -9,28 +9,35 @@ type Product = {
 };
 
 type ProductContextType = {
-  selectedProducts: Product[]; // ✅ Now an array
+  singleProduct: Product | null; 
+  setSingleProduct: React.Dispatch<React.SetStateAction<Product | null>>; 
+  multipleProducts: Product[];
+  setMultipleProducts: React.Dispatch<React.SetStateAction<Product[]>>; 
   addProduct: (product: Product) => void;
   removeProduct: (productId: number) => void;
+  menuCart: boolean;
+  setCartOpen: (value: boolean) => void;
 };
 
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
 
 export function ProductProvider({ children }: { children: ReactNode }) {
-  const [selectedProducts, setSelectedProducts] = useState<Product[]>([]); // ✅ Use array
+  const [multipleProducts, setMultipleProducts] = useState<Product[]>([]);
+  const [singleProduct, setSingleProduct] = useState<Product | null>(null); 
+  const [menuCart, setCartOpen] = useState(false);
 
   // ✅ Add a product to the cart
   const addProduct = (product: Product) => {
-    setSelectedProducts((prev) => [...prev, product]);
+    setMultipleProducts((prev) => [...prev, product]);
   };
 
   // ✅ Remove a product from the cart
   const removeProduct = (productId: number) => {
-    setSelectedProducts((prev) => prev.filter((product) => product.id !== productId));
+    setMultipleProducts((prev) => prev.filter((product) => product.id !== productId));
   };
 
   return (
-    <ProductContext.Provider value={{ selectedProducts, addProduct, removeProduct }}>
+    <ProductContext.Provider value={{ multipleProducts, setMultipleProducts, singleProduct, setSingleProduct, addProduct, removeProduct, menuCart, setCartOpen }}>
       {children}
     </ProductContext.Provider>
   );

@@ -5,11 +5,16 @@ import { useProduct } from "../context/ProductContext";
 import Image from "next/image";
 
 const Shop = () => {
-  const [products, setProducts] = useState<{ id: number; name: string; thumbnail_url: string; external_id: string }[]>([]);
+  const [products, setProducts] = useState<{ id: number; name: string; thumbnail_url: string; external_id: string, description: string, price: number}[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
-  const { setSelectedProduct } = useProduct();
+  const { setSingleProduct } = useProduct();
+
+  const handleProductClick = (Product: { id: number; name: string; thumbnail_url: string; external_id: string, description: string, price: number }) => {
+    setSingleProduct(Product);
+    router.push(`/shop/${Product.id}`);
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -19,7 +24,7 @@ const Shop = () => {
 
         const data = await response.json();
         console.log("Fetched Products:", data);
-        setProducts(data.map((product: { id: number; name: string; thumbnail_url: string; external_id?: string }) => ({
+        setProducts(data.map((product: { id: number; name: string; thumbnail_url: string; external_id?: string, description: string, price: number }) => ({
           ...product,
           external_id: product.external_id || ""
         })));
@@ -29,18 +34,24 @@ const Shop = () => {
       } finally {
         setLoading(false);
       }
+      
     };
 
     fetchProducts();
   }, []);
 
+
+
   return (
-    <div className="w-full pb-10 bg-blue-50 relative">
-      <h1 className="text-3xl mt-10 sm:text-6xl font-extrabold text-black text-center">
+    <div className="w-full pb-10 bg-white/50 relative">
+      <h1 className="text-3xl pt-10 sm:text-6xl font-extrabold text-black text-center">
         Shop
       </h1>
+      <p className="text-lg pt-5 sm:text-3xl font-thin text-black text-center">
+        Browse our fine collection of beanies
+      </p>
 
-      <div className="container mx-auto p-5 mt-20">
+      <div className="container mx-auto p-5 mt-10">
         {loading && <p>Loading products...</p>}
         {error && <p className="text-red-500">{error}</p>}
         {!loading && !error && (
@@ -48,14 +59,13 @@ const Shop = () => {
             {products.map((product) => (
               <li
                 key={product.id}
-                className="p-4 border border-gray-300 rounded shadow bg-white flex flex-col items-center cursor-pointer"
-                onClick={() => {
-                  setSelectedProduct(product);
-                  router.push(`/shop/${product.id}`); // Navigate to product page
+                className="p-4 border-2 border-gray-300 rounded-lg shadow-lg bg-white flex flex-col items-center cursor-pointer hover:border-gray-700"
+                onClick={() => {handleProductClick(product); 
                 }}
               >
                 <Image src={product.thumbnail_url} alt={product.name} width={500} height={500} className="w-auto h-auto object-cover rounded mb-2" />
                 <h2 className="text-lg font-bold text-center text-black">{product.name}</h2>
+                <p className="text-black">{product.price}</p>
               </li>
             ))}
           </ul>

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useProduct } from "../../src/app/context/ProductContext";
-import { useRouter } from "next/navigation";
+/* import { useRouter } from "next/navigation"; */
 
 interface CartProps {
   open: boolean;
@@ -8,17 +8,17 @@ interface CartProps {
 }
 
 const Cart: React.FC<CartProps> = ({ open, setOpen }) => {
-  const router = useRouter();
-  const { selectedProducts, removeProduct } = useProduct(); // ✅ Use `selectedProducts` instead of `selectedProduct`
+/*   const router = useRouter(); */
+  const { multipleProducts, removeProduct } = useProduct(); 
 
   return (
-    <div className="container mx-auto p-10">
+    <div className=" p-2 bg-black/85 rounded-lg w-17 mr-5 hover:bg-black/90 pointer-cursor">
       <Image
-        src="/cart_black.svg"
+        src="/cart_white.svg"
         alt="cart"
         width={40}
         height={50}
-        className="ml-2 sm:ml-10 cursor-pointer"
+        className=" cursor-pointer w-auto h-auto"
         onClick={() => setOpen(!open)}
       />
 
@@ -27,13 +27,13 @@ const Cart: React.FC<CartProps> = ({ open, setOpen }) => {
           <div className="flex flex-col items-center justify-center h-full">
             <h2 className="text-2xl font-bold mb-4 text-white">Cart</h2>
 
-            {selectedProducts.length === 0 ? (
+            {multipleProducts.length === 0 ? (
               <p className="text-lg text-white">Your cart is empty</p>
             ) : (
               <ul className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 p-5">
-                {selectedProducts.map((product) => (
+                {multipleProducts.map((product, index) => (
                   <li
-                    key={product.id}
+                    key={`${product.id}-${index}`}
                     className="p-4 border border-gray-300 rounded shadow bg-white flex flex-col items-center cursor-pointer"
                   >
                     <Image
@@ -60,6 +60,7 @@ const Cart: React.FC<CartProps> = ({ open, setOpen }) => {
               X
             </p>
           </button>
+          
         </div>
       )}
     </div>

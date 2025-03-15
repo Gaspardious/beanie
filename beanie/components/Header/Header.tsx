@@ -5,11 +5,13 @@ import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 import MobileMenu from "../MobileMenu/MobileMenu"
 import Cart from "../Cart/Cart"
+import { useProduct } from "../../src/app/context/ProductContext"
+
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [menuCart, setCartOpen] = useState(false);
+  const { menuCart, setCartOpen } = useProduct();
   const pathname = usePathname();
 
    useEffect(() => {

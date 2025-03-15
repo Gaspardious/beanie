@@ -12,6 +12,7 @@ export async function GET() {
       return NextResponse.json({ error: "Failed to fetch products" }, { status: response.status });
     }
 
+
     const data = await response.json();
     return NextResponse.json(data.result || []);
   } catch (error) {
