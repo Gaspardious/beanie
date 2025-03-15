@@ -69,15 +69,14 @@ const Header = () => {
           <Cart open={menuCart} setOpen={setCartOpen} />
           <MobileMenu open={menuOpen} setOpen={setMenuOpen} />
         </div>
-        
-
-         
-   
       </section>
-      {menuOpen && (
+      {(menuOpen || menuCart) && (
         <div 
-          className="bg-black/40 fixed top-0 left-0 w-screen h-screen" 
-          onClick={() => setMenuOpen(false)} 
+          className="bg-black/50 fixed top-0 left-0 w-screen h-screen" 
+          onClick={() => {
+            setMenuOpen(false);
+            setCartOpen(false);
+          }} 
         />
       )}
     </header>

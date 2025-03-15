@@ -12,7 +12,7 @@ const Cart: React.FC<CartProps> = ({ open, setOpen }) => {
   const { multipleProducts, removeProduct } = useProduct(); 
 
   return (
-    <div className=" p-2 bg-black/85 rounded-lg w-17 mr-5 hover:bg-black/90 pointer-cursor">
+    <div className=" p-2 bg-black/85 rounded-lg w-17 mr-5 hover:bg-black/90 pointer-cursor z-10">
       <Image
         src="/cart_white.svg"
         alt="cart"

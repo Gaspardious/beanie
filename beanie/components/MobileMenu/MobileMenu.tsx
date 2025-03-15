@@ -72,7 +72,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ open, setOpen}) => {
       </motion.button>
 
       {/* Sidebar Menu */}
-      <ul className=" flex flex-col justify-start items-center ul_container fixed top-0 left-0 h-full w-64 bg-black/90 text-white p-5 shadow-lg z-40">
+      <ul className=" flex flex-col justify-start items-center ul_container fixed top-0 left-0 h-full w-64 bg-black/90 text-white p-5 shadow-lg z-10">
         <p className="self-start close_btn cursor-pointer text-xl" onClick={() => setOpen(false)}>
           ✖
         </p>
