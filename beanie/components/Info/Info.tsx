@@ -14,8 +14,9 @@ interface InfoProps {
 const Info: React.FC<InfoProps> = ({ BigText, ImageSrc, BtnText, SmallText, reverse = false })=> {
   return (
     <div className={`flex flex-row items-center justify-center pt-1 px-1 w-full relative bg-white ${reverse ? 'flex-row-reverse' : 'flex-row'}`}>
+        
         <section className={`w-1/2 ${reverse ? 'ml-1' : 'mr-1'}`}>
-            <Image src={ImageSrc} alt="logo" width={1000} height={1000} className={`object-cover w-full h-[250px] sm:h-[700px]`}/>
+            <Image src={ImageSrc} alt="logo" loading="lazy" width={1000} height={1000} className={`object-cover w-full h-[250px] sm:h-[700px]`}/>
         </section>
 
 
