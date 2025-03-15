@@ -20,6 +20,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ open, setOpen}) => {
   const links: NavLink[] = [
     { label: "HOME", path: "/" },
     { label: "SHOP", path: "/shop" },
+    { label: "CHECKOUT", path: "/checkout" },
     { label: "ABOUT", path: "/about" },
     { label: "CONTACT", path: "/contact" },
     { label: "Cookies", path: "/cookiespolicy" },

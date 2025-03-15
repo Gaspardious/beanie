@@ -8,5 +8,5 @@ export const DEFAULT_PRODUCT_DETAILS = {
       "Snug, comfortable fit",
       "One size fits most",
     ],
-    price: 24.99,
+    price: 279,
   };

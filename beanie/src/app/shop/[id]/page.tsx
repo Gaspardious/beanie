@@ -66,10 +66,14 @@ const ProductPage = () => {
         <div className="flex flex-col w-full gap-4">
 
           <h1 className="text-[50px] text-center font-bold text-black py-5 uppercase">{singleProduct.name}</h1>
+     
             <section className=" bg-white/90 p-5 rounded-lg">
               <p className="text-black text-lg py-2 text-center">{DEFAULT_PRODUCT_DETAILS.description}</p>
-              <p className="text-black py-10">Features: {DEFAULT_PRODUCT_DETAILS.features.map((feature, index) => <li key={index}>{feature}</li>)}</p>
-     
+              <div className="flex flex-row justify-between items-center gap-4">
+              <p className="text-black py-10"> <span className="font-bold text-xl">Features:</span> {DEFAULT_PRODUCT_DETAILS.features.map((feature, index) => <li key={index}>{feature}</li>)}</p>
+              <p className=" bg-black p-5 rounded-3xl w-content h-content text-white text-4xl font-oswald text-center mr-10">{DEFAULT_PRODUCT_DETAILS.price} SEK </p>
+              </div>
+              <p className="text-black py-0 text-sm">Made on demand</p>
               <button 
                 ref={buttonRef}
                 className=" w-full px-4 lg:w-1/2 font-bold py-2 bg-black rounded cursor-pointer" 
@@ -80,7 +84,8 @@ const ProductPage = () => {
               >
                 Add to Cart
               </button>
-              <p className="text-black py-0 text-sm">Made on demand</p>
+              <p className="text-red-500 font-bold py-0 text-sm">PAYMENT OPTIONS IMAGES</p>
+
             </section>
         </div>
       </div>

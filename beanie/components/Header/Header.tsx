@@ -54,6 +54,7 @@ const Header = () => {
             {[
               { name: "HOME", path: "/" },
               { name: "SHOP", path: "/shop" },
+              { name: "CHECKOUT", path: "/checkout" },
               { name: "ABOUT", path: "/about" },
               { name: "CONTACT", path: "/contact" },
             ].map((link) => (
