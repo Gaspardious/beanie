@@ -45,7 +45,7 @@ const Header = () => {
         </div>
 
         <Link href="/">
-           <Image src={isScrolled ? "/tiger_white.png" : "/tiger_black.png"} alt="logo" width={110} height={110} className=" ml-2 sm:ml-10" />
+           <Image src={isScrolled ? "/logo_white.png" : "/logo_black.png"} alt="logo" width={85} height={90} className=" ml-2 sm:ml-10" />
          </Link>
 
           <nav className={`hidden sm:flex gap-8 font-bold text-[1.2rem] ${
