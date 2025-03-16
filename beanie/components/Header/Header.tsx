@@ -45,7 +45,22 @@ const Header = () => {
         </div>
 
         <Link href="/">
-           <Image src={isScrolled ? "/logo_white.png" : "/logo_black.png"} alt="logo" width={85} height={90} className=" ml-2 sm:ml-10" />
+        <div className="relative w-[85px] h-[90px]">
+  <Image 
+    src="/logo_black.png" 
+    alt="logo" 
+    width={85} 
+    height={90} 
+    className={`absolute transition-opacity duration-1000 ease-in-out ${isScrolled ? "opacity-0" : "opacity-100"}`}
+  />
+  <Image 
+    src="/logo_white.png" 
+    alt="logo" 
+    width={85} 
+    height={90} 
+    className={`absolute transition-opacity duration-1000 ease-in-out ${isScrolled ? "opacity-100" : "opacity-0"}`}
+  />
+</div>
          </Link>
 
           <nav className={`hidden sm:flex gap-8 font-bold text-[1.2rem] ${
