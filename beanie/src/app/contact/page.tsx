@@ -5,7 +5,7 @@ import Image from 'next/image'
 const Contact = () => {
   return (
     <div className='w-full pb-10 bg-blue-50 relative '>
-        <div className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat bg-[url('/beanie_red.jpg')]">
+        <div className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat bg-[url('/beanie.webp')]">
         <div className="absolute inset-0 bg-black opacity-50"></div>
         </div>
 

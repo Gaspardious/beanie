@@ -43,7 +43,14 @@ const ProductPage = () => {
   }
 
   return (
-    <div className=" container mx-auto p-3">
+        <div className=" pb-10 bg-white/50 relative">
+    <div className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat bg-[url('/beanie.webp')]"> 
+        <div className="absolute inset-0 bg-black opacity-50"></div>
+        </div>
+        <h1 className="text-3xl mt-10 sm:text-6xl font-extrabold text-white absolute top-20 left-1/2 transform -translate-x-1/2">Shop</h1>
+        <p className="text-1xl w-5/6 sm:text-2xl text-center  mt-20 sm:mt-20 font-extrabold text-white absolute top-30 left-1/2 transform -translate-x-1/2">{singleProduct.name}</p>
+       
+
       <section className="flex flex-row items-center gap-5">
         <button className="mb-4 px-4 py-2 bg-black rounded" onClick={() => router.push("/shop")}>
           ← Back to Shop

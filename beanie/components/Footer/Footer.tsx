@@ -47,7 +47,7 @@ const Footer = () => {
         <hr className="border-white border-opacity-50 w-4/5 mx-auto mt-10 mb-10"/>
 
         <div className="flex flex-row items-center justify-center gap-3">
-         <Image src="/tiger_white.png" alt="logo" width={100} height={100}  />
+         <Image src="/logo_white.png" alt="logo" width={80} height={80}  />
           <section>
             <p className="text-white text-sm">© 2025 Gaspar Invest AB </p>
             <p className="text-white text-sm">All rights reserved </p>

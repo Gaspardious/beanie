@@ -49,11 +49,14 @@ const Shop = () => {
 
   return (
     <div className="w-full pb-10 bg-white/50 relative">
-      <h1 className="text-3xl pt-10 sm:text-6xl font-extrabold text-black text-center">
-        Shop
-      </h1>
-      <p className="text-lg pt-5 sm:text-3xl font-thin text-black text-center">
-        Browse our fine collection of beanies
+        <div className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat bg-[url('/beanie.webp')]"> 
+        <div className="absolute inset-0 bg-black opacity-50"></div>
+        </div>
+        <h1 className="text-3xl mt-10 sm:text-6xl font-extrabold text-white absolute top-20 left-1/2 transform -translate-x-1/2">Shop</h1>
+        <p className="text-1xl w-5/6 sm:text-2xl text-center  mt-15 sm:mt-20 font-extrabold text-white absolute top-30 left-1/2 transform -translate-x-1/2">Browse our fine collection of beanies</p>
+       
+      <p className="text-lg pt-10 sm:text-3xl font-thin text-black text-center p-5">
+        Our collection of beanies are made with the finest materials and are perfect for any occasion.
       </p>
 
       <div className="container mx-auto p-5 mt-10">

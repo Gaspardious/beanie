@@ -4,7 +4,7 @@ import React from 'react'
 const about = () => {
   return (
       <div className='w-full pb-10 bg-blue-50 relative '>
-          <div className="relative h-[300px] w-full bg-cover bg-top bg-no-repeat bg-[url('/beanie_red.jpg')]">
+          <div className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat bg-[url('/beanie.webp')]">
           <div className="absolute inset-0 bg-black opacity-50"></div>
           </div>
         <h1 className="text-3xl h-screen mt-5 sm:text-6xl font-extrabold text-white absolute top-20 left-1/2 transform -translate-x-1/2">About</h1>
