@@ -62,10 +62,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ open, setOpen}) => {
     <div className="container" ref={scope}>
       {/* Mobile Menu Button */}
       <motion.button
-        className="p-2 mr-2 bg-[#1c1c1c] w-10 text-white rounded-md sm:hidden z-40"
+        className="p-2 mr-2 bg-[#1c1c1c] w-10 text-white rounded-md sm:hidden border border-white z-40"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        whileHover={{ scale: 1.1 }}
+        whileHover={{ scale: 1.1, rotate: -10 }}
         whileTap={{ scale: 0.8 }}
         onClick={() => setOpen(!open)}
       >

@@ -19,7 +19,21 @@ const CheckoutPage = () => {
   };
 
   if (checkoutProducts.length === 0) {
-    return <p className="text-center text-xl">No products for checkout.</p>;
+    return (
+      <>
+
+  
+        <div className="pb-10 bg-white/50 relative">
+          <div className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat bg-[url('/beanie.webp')]"> 
+            <div className="absolute inset-0 bg-black opacity-50"></div>
+          </div>
+          <h1 className="text-3xl mt-10 sm:text-6xl font-extrabold text-white absolute top-20 left-1/2 transform -translate-x-1/2">
+            Checkout
+          </h1>
+          <p className="text-center text-xl text-black flex items-center justify-center h-[400px]">No products for checkout.</p>
+        </div>
+      </>
+    );
   }
 
   return (
