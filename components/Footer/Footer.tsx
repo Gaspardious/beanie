@@ -1,7 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
 
-
 const Footer = () => {
     return (
       <div className="w-full px-1 py-1 bg-[#1c1c1c] sm:px-12 border-t-1 border-gray-700" >
@@ -20,8 +19,8 @@ const Footer = () => {
             <h2 className="text-white text-2xl font-bold mb-5">ABOUT</h2>
             <div className="flex flex-col gap-2 max-w-[200px] sm:max-w-none mx-auto sm:mx-0">
               <p className="text-white text-sm w-48 pb-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. </p>
-              <Link className="hover:text-[#4c6cd3]" href="/integritetspolicy">- Integrity</Link>
-              <Link className="hover:text-[#4c6cd3]" href="/cookiespolicy"> - Cookies</Link>
+              <Link className="hover:hover:text-orange-400" href="/integritetspolicy">- Integrity</Link>
+              <Link className="hover:hover:text-orange-400" href="/cookiespolicy"> - Cookies</Link>
             </div>
           </section>
 
@@ -36,10 +35,10 @@ const Footer = () => {
           <section className=" hidden mt-10 sm:mt-0 sm:block">
             <h2 className="text-white text-2xl font-bold mb-5">MENU</h2>
             <nav className="flex gap-2 justify-center sm:justify-start flex-col">
-                <Link className="hover:text-[#4c6cd3] active:text-[#4c6cd3]" href="/">HOME</Link>
-                <Link className="hover:text-[#4c6cd3]" href="/about">ABOUT</Link>
-                <Link className="hover:text-[#4c6cd3]" href="/shop">SHOP</Link>
-                <Link className="hover:text-[#4c6cd3]" href="/contact">CONTACT</Link>
+                <Link className="hover:text-orange-400 active:text-[#4c6cd3]" href="/">HOME</Link>
+                <Link className="hover:text-orange-400" href="/about">ABOUT</Link>
+                <Link className="hover:text-orange-400" href="/shop">SHOP</Link>
+                <Link className="hover:text-orange-400" href="/contact">CONTACT</Link>
             </nav>
           </section>
         </div>

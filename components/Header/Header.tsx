@@ -34,12 +34,11 @@ const Header = () => {
   return (
 <header 
   className={`h-[80px] fixed top-0 left-0 w-full flex items-center justify-between z-50 duration-250 
-    ${isScrolled ? "mt-0" : "mt-10"} 
-    ${isScrolled && !menuOpen ? "bg-black/50 backdrop-blur-md" : "bg-transparent "}`}
+    ${isScrolled ? "mt-0 bg-black/70" : "mt-10 bg-transparent"} 
+    `}
 >
 
-
-        <div className="flex flex-row  ml-5">    
+        <div className="flex flex-row ml-5 lg:hidden">    
           <MobileMenu open={menuOpen} setOpen={setMenuOpen} />
         </div>
 
@@ -50,6 +49,7 @@ const Header = () => {
             alt="logo" 
             width={65} 
             height={65} 
+            className="cursor-pointer lg:ml-5 "
           />
         </div>
          </Link>

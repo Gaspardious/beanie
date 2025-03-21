@@ -10,14 +10,15 @@ interface InfoProps {
   ImageSrc: string;
   BtnText?: string;
   paddingImage?: string;
+  positionImage?: string;
 }
 
-const Info: React.FC<InfoProps> = ({ BigText, ImageSrc, BtnText, paddingImage, SmallText, reverse = false })=> {
+const Info: React.FC<InfoProps> = ({ BigText, ImageSrc, BtnText, paddingImage, positionImage, SmallText, reverse = false })=> {
   return (
     <div className={`flex flex-row items-center justify-center pt-1 px-1 w-full relative  ${reverse ? 'flex-row-reverse' : 'flex-row'}`}>
         
         <section className={`w-1/2 bg-gradient-to-r from-[#424242] to-[#0f0b0b] ${reverse ? 'ml-1' : 'mr-1'}`}>
-            <Image src={ImageSrc} alt="logo" loading="lazy" width={1000} height={1000} className={`object-cover w-full h-[250px] sm:h-[700px] ${paddingImage} `}/>
+            <Image src={ImageSrc} alt="logo" loading="lazy" width={1000} height={1000} className={` w-full h-[250px] sm:h-[700px] ${paddingImage} ${positionImage}  `}/>
         </section>
 
 
