@@ -33,9 +33,9 @@ const Header = () => {
 
   return (
 <header 
-  className={`h-[95px] fixed top-0 left-0 w-full flex items-center justify-between z-50 duration-250   ${
-    isScrolled && !menuOpen ? "bg-black/50 backdrop-blur-md" : "bg-transparent"
-  }`}
+  className={`h-[80px] fixed top-0 left-0 w-full flex items-center justify-between z-50 duration-250 
+    ${isScrolled ? "mt-0" : "mt-10"} 
+    ${isScrolled && !menuOpen ? "bg-black/50 backdrop-blur-md" : "bg-transparent "}`}
 >
 
 
@@ -48,8 +48,8 @@ const Header = () => {
           <Image 
             src="/logo_white.png" 
             alt="logo" 
-            width={70} 
-            height={70} 
+            width={65} 
+            height={65} 
           />
         </div>
          </Link>

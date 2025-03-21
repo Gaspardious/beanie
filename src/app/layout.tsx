@@ -5,6 +5,7 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import { ProductProvider } from "../app/context/ProductContext";
 import { Analytics } from '@vercel/analytics/next';
+import Banner from "../../components/Banner/Banner";
 
 
 
@@ -47,9 +48,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${nunitoSans.variable} ${oswald.variable}  antialiased`}
       >
+        <Banner />
         <Header />
         {children}
         <Analytics />
+        <Banner />
         <Footer />
       </body>
     </html>
