@@ -6,6 +6,7 @@ import Footer from "../../components/Footer/Footer";
 import { ProductProvider } from "../app/context/ProductContext";
 import { Analytics } from '@vercel/analytics/next';
 import Banner from "../../components/Banner/Banner";
+import Script from 'next/script'
 
 
 
@@ -48,6 +49,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${nunitoSans.variable} ${oswald.variable}  antialiased`}
       >
+        <head>
+        <Script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="c21a8c41-a011-4abf-9868-7c786ec6fb78" data-blockingmode="auto" type="text/javascript" defer></Script>
+        </head>
+
         <Banner />
         <Header />
         {children}
