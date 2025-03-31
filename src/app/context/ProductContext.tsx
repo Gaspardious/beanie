@@ -8,6 +8,7 @@ type Product = {
   external_id: string;
   cartItemId: string;
   quantity: number;
+  price: number;
 };
 
 type ProductContextType = {

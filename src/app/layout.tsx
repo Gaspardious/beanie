@@ -45,7 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <ProductProvider>
-    <html lang="en">
+    <html lang="en" className="bg-[#1c1c1c]">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${nunitoSans.variable} ${oswald.variable}  antialiased`}
       >

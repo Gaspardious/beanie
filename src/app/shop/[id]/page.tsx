@@ -78,7 +78,7 @@ const ProductPage = () => {
               <p className="text-black text-lg py-2 text-center">{DEFAULT_PRODUCT_DETAILS.description}</p>
               <div className="flex flex-row justify-between items-center gap-4">
               <p className="text-black py-10"> <span className="font-bold text-xl">Features:</span> {DEFAULT_PRODUCT_DETAILS.features.map((feature, index) => <li key={index}>{feature}</li>)}</p>
-              <p className=" bg-black p-5 rounded-3xl w-content h-content text-white text-4xl font-oswald text-center mr-10">{DEFAULT_PRODUCT_DETAILS.price} SEK </p>
+              <p className=" bg-black p-5 rounded-3xl w-content h-content text-white text-4xl font-oswald text-center mr-10">{singleProduct.price} SEK </p>
               </div>
               <p className="text-black py-0 text-sm">Made on demand</p>
               <button 

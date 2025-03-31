@@ -45,7 +45,13 @@ const Shop = () => {
     fetchProducts();
   }, []);
 
-
+  const ProductSkeleton = () => (
+    <div className="p-4 border-2 border-gray-300 rounded-lg shadow-lg bg-white flex flex-col items-center">
+      <div className="w-full h-64 bg-gray-200 animate-pulse rounded mb-2"></div>
+      <div className="w-3/4 h-4 bg-gray-200 animate-pulse rounded mb-2"></div>
+      <div className="w-1/4 h-4 bg-gray-200 animate-pulse rounded"></div>
+    </div>
+  );
 
   return (
     <div className="w-full pb-10 bg-white/50 relative">
@@ -60,24 +66,29 @@ const Shop = () => {
       </p>
 
       <div className="container mx-auto p-5 mt-10">
-        {loading && <p>Loading products...</p>}
         {error && <p className="text-red-500">{error}</p>}
-        {!loading && !error && (
-          <ul className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-            {products.map((product) => (
+        <ul className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+          {loading ? (
+            [...Array(8)].map((_, index) => (
+              <li key={index}>
+                <ProductSkeleton />
+              </li>
+            ))
+          ) : (
+            products.map((product) => (
               <li
                 key={product.id}
-                className="p-4 border-2 border-gray-300 rounded-lg shadow-lg bg-white flex flex-col items-center cursor-pointer hover:border-gray-700"
+                className="p-4 border-2 border-gray-300 rounded-lg shadow-lg bg-white flex flex-col items-center cursor-pointer hover:border-gray-700 transition-all duration-200"
                 onClick={() => {handleProductClick(product); 
                 }}
               >
                 <Image src={product.thumbnail_url} alt={product.name} width={500} height={500} className="w-auto h-auto object-cover rounded mb-2" />
                 <h2 className="text-lg font-bold text-center text-black">{product.name}</h2>
-                <p className="text-black">{product.price}</p>
+                <p className="text-black">{typeof product.price === 'number' ? `${product.price} SEK` : '0 SEK'}</p>
               </li>
-            ))}
-          </ul>
-        )}
+            ))
+          )}
+        </ul>
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { useProduct } from "../../src/app/context/ProductContext";
 import { useRouter } from "next/navigation";
-import { DEFAULT_PRODUCT_DETAILS } from "../../components/ProductDetails/ProductDetails";
 import { motion } from "framer-motion";
 
 interface CartProps {
@@ -20,35 +19,12 @@ const Cart: React.FC<CartProps> = ({ open, setOpen }) => {
       transition: {
         type: "spring",
         bounce: 0,
-        duration: 0.1,
-        when: "beforeChildren",
-        staggerChildren: 0.10
+        duration: 0.1
       }
     },
     closed: {
       x: "100%",
       opacity: 0,
-    }
-  };
-
-  const itemVariants = {
-    open: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        bounce: 0,
-        duration: 0.2
-      }
-    },
-    closed: {
-      x: "100%",
-      opacity: 0,
-      transition: {
-        type: "spring",
-        bounce: 0,
-        duration: 0.2
-      }
     }
   };
 
@@ -58,16 +34,20 @@ const Cart: React.FC<CartProps> = ({ open, setOpen }) => {
       return;
     }
     setCheckoutProducts(multipleProducts);
+    setOpen(false);
     router.push("/checkout");
   };
 
+  const calculateTotal = () => {
+    return multipleProducts.reduce((total, product) => total + (product.quantity * product.price), 0).toFixed(2);
+  };
+
   return (
-    <div className="p-2 bg-black/85 rounded-lg w-10 mr-5 border border-white hover:bg-black/90 pointer-cursor z-10">
+    <div className="p-2 bg-black/85 rounded-lg w-10 mr-5 border border-white hover:bg-black/90 pointer-cursor z-50">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        whileHover={{ scale: 1.1, rotate: 10 }}
-        whileTap={{ scale: 0.8 }}
+        whileHover={{ scale: 1.1 }}
         className="cursor-pointer"
       >
         <Image
@@ -82,82 +62,84 @@ const Cart: React.FC<CartProps> = ({ open, setOpen }) => {
 
       {open && (
         <motion.div 
-          className="bg-white fixed top-0 right-0 w-2/3 lg:w-1/3 h-screen"
+          className="bg-white fixed top-0 right-0 w-full md:w-[500px] h-screen"
           initial="closed"
           animate={open ? "open" : "closed"}
           variants={cartVariants}
         >
-          <div className="flex flex-col items-center justify-center h-full">
-            <h2 className="text-6xl font-bold mt-10 text-black">Cart</h2>
+          <div className="flex flex-col h-full p-6">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-xl font-bold uppercase tracking-wider text-black">Shopping Bag</h2>
+              <button onClick={() => setOpen(false)} className="text-2xl text-black">×</button>
+            </div>
 
-            {multipleProducts.length === 0 ? (
-              <p className="text-lg text-black">Your cart is empty</p>
-            ) : (
-              <motion.ul className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 p-3 overflow-y-scroll h-1/2 mt-10 bg-gray-200 rounded">
-                {multipleProducts.map((product) => (
-                  <motion.li 
-                    key={product.cartItemId} 
-                    className="p-2 border border-gray-300 rounded h-[280px] bg-red-50 flex flex-col items-center cursor-pointer relative"
-                    variants={itemVariants}
-                  >
-                    <h2 className="text-sm uppercase text-center font-nunito text-black m-1">{product.name}</h2>
-                    <Image src={product.thumbnail_url} alt={product.name} width={500} height={500} className="w-auto h-auto object-cover rounded mb-2" />
-                    <p className="text-md text-center font-nunito text-black">${DEFAULT_PRODUCT_DETAILS.price}</p>
-
-                    <div className="flex items-center gap-2 mt-2">
-                      <button
-                        className="text-black font-bold px-2 py-1 bg-gray-300 rounded"
-                        onClick={() => removeProduct(product.cartItemId)}
-                      >
-                        -
-                      </button>
-                      <span className="text-black font-bold">{product.quantity}</span>
-                      <button
-                        className="text-black font-bold px-2 py-1 bg-gray-300 rounded"
-                        onClick={() => addProduct(product)}
-                      >
-                        +
-                      </button>
+            <div className="flex-1 overflow-auto">
+              {multipleProducts.map((product) => (
+                <div key={product.cartItemId} className="border-b border-gray-200 py-6">
+                  <div className="flex gap-6">
+                    <div className="w-24 h-24 bg-gray-50">
+                      <Image 
+                        src={product.thumbnail_url} 
+                        alt={product.name} 
+                        width={96} 
+                        height={96} 
+                        className="object-cover w-full h-full"
+                      />
                     </div>
+                    <div className="flex-1">
+                      <h3 className="text-base uppercase tracking-wider text-black">{product.name}</h3>
+                      <p className="text-sm mt-1 text-black">Beige/Beige</p>
+                      
+                      <div className="flex items-center mt-4">
+                        <div className="flex items-center">
+                          <button
+                            className="text-lg w-8 h-8 hover:bg-gray-100 text-black"
+                            onClick={() => removeProduct(product.cartItemId)}
+                          >−</button>
+                          <span className="w-8 text-center text-black">{product.quantity}</span>
+                          <button
+                            className="text-lg w-8 h-8 hover:bg-gray-100 text-black"
+                            onClick={() => addProduct(product)}
+                          >+</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <p className="font-medium text-black">{product.price} SEK</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
 
-                    <p className="text-md text-center font-nunito py-2 font-bold text-black">
-                      Total: ${(product.quantity * DEFAULT_PRODUCT_DETAILS.price).toFixed(2)}
-                    </p>
-                  </motion.li>
-                ))}
-              </motion.ul>
-            )}
+            <div className="mt-auto pt-6">
+              <div className="flex justify-between py-4 border-t border-gray-200">
+                <span className="text-sm uppercase tracking-wider text-black">TOTAL incl. VAT & Duties</span>
+                <span className="font-medium text-black">{calculateTotal()} SEK</span>
+              </div>
 
-            <motion.p 
-              variants={itemVariants}
-              className='bg-black border-t border-white w-full py-2 text-md text-center font-nunito text-white'
-            >
-              Total: ${multipleProducts.reduce((total, product) => total + (product.quantity * DEFAULT_PRODUCT_DETAILS.price), 0).toFixed(2)}
-            </motion.p>
-
-            {multipleProducts.length > 0 && (
-              <motion.button 
-                variants={itemVariants}
-                className="px-6 py-3 w-full cursor-pointer bg-green-600 text-white font-bold rounded" 
+              <button
                 onClick={handleCheckout}
+                className="w-full bg-black text-white py-4 mb-6 uppercase tracking-wider font-medium hover:bg-black/90 transition-colors"
               >
-                Proceed to Checkout
-              </motion.button>
-            )}
+                Checkout
+              </button>
 
-            <motion.div 
-              variants={itemVariants}
-              className='flex flex-col items-center justify-center h-1/2 w-full bg-white'
-            >
-              <h2 className='text-4xl text-black'>Upsale Items here!</h2>
-            </motion.div>
+              <div className="flex justify-center gap-4 mb-8">
+                <Image src="/payment/visa.svg" alt="Visa" width={32} height={20} className="opacity-50 hover:opacity-100 transition-opacity" />
+                <Image src="/payment/mastercard.svg" alt="Mastercard" width={32} height={20} className="opacity-50 hover:opacity-100 transition-opacity" />
+                <Image src="/payment/paypal.svg" alt="PayPal" width={32} height={20} className="opacity-50 hover:opacity-100 transition-opacity" />
+                <Image src="/payment/klarna.svg" alt="Klarna" width={32} height={20} className="opacity-50 hover:opacity-100 transition-opacity" />
+              </div>
+
+              {multipleProducts.length > 0 && (
+                <div className="border-t border-gray-200 pt-6">
+                  <h3 className="text-base uppercase tracking-wider mb-4 text-black">Last minute additions</h3>
+                  {/* Add last minute suggestions here */}
+                </div>
+              )}
+            </div>
           </div>
-          
-          <motion.button variants={itemVariants}>
-            <p className="absolute top-5 left-5 cursor-pointer text-xl text-black" onClick={() => setOpen(!open)}>
-              ✖
-            </p>
-          </motion.button>      
         </motion.div>
       )}
     </div>
