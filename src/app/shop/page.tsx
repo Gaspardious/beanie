@@ -55,17 +55,17 @@ const Shop = () => {
 
   return (
     <div className="w-full pb-10 bg-white/50 relative">
-        <div className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat bg-[url('/beanie.webp')]"> 
+      <div className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat bg-[url('/beanie.webp')]"> 
         <div className="absolute inset-0 bg-black opacity-50"></div>
-        </div>
-        <h1 className="text-3xl mt-10 sm:text-6xl font-extrabold text-white absolute top-20 left-1/2 transform -translate-x-1/2">Shop</h1>
-        <p className="text-1xl w-5/6 sm:text-2xl text-center  mt-15 sm:mt-20 font-extrabold text-white absolute top-30 left-1/2 transform -translate-x-1/2">Browse our fine collection of beanies</p>
+        <h1 className="text-3xl sm:text-6xl font-extrabold text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">Shop</h1>
+        <p className="text-1xl w-5/6 sm:text-2xl text-center font-extrabold text-white absolute bottom-6 left-1/2 transform -translate-x-1/2">Browse our fine collection of beanies</p>
+      </div>
        
-      <p className="text-lg pt-10 sm:text-3xl font-thin text-black text-center p-5">
+      <p className="text-lg pt-6 sm:text-2xl font-thin text-black text-center p-4">
         Our collection of beanies are made with the finest materials and are perfect for any occasion.
       </p>
 
-      <div className="container mx-auto p-5 mt-10">
+      <div className="container mx-auto p-4">
         {error && <p className="text-red-500">{error}</p>}
         <ul className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {loading ? (

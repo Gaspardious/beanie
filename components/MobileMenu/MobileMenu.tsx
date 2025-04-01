@@ -59,6 +59,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ open, setOpen}) => {
     { label: "CHECKOUT", path: "/checkout" },
     { label: "ABOUT", path: "/about" },
     { label: "CONTACT", path: "/contact" },
+    { label: "FAQ", path: "/faq" },
     { label: "Cookies", path: "/cookiespolicy" },
     { label: "Integrity", path: "/integritetspolicy" },
   ];

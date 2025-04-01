@@ -4,19 +4,49 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 import { DEFAULT_PRODUCT_DETAILS } from "../../../../components/ProductDetails/ProductDetails";
+import Link from "next/link";
+
+// Define Product type to match the one in ProductContext
+type Product = {
+  id: number;
+  name: string;
+  thumbnail_url: string;
+  external_id: string;
+  cartItemId: string;
+  quantity: number;
+  price: number;
+};
+
+// Define type for API product data that might be missing some fields
+type APIProduct = {
+  id: number;
+  name: string;
+  thumbnail_url: string;
+  external_id?: string;
+  price: number;
+  description?: string;
+};
 
 const ProductPage = () => {
-  const { singleProduct, addProduct, setCartOpen } = useProduct();
+  const { singleProduct, addProduct, setCartOpen, multipleProducts, setSingleProduct: setContextSingleProduct } = useProduct();
   const [isButtonVisible, setIsButtonVisible] = useState(true);
+  const [selectedImage, setSelectedImage] = useState(0);
+  const [similarProducts, setSimilarProducts] = useState<Product[]>([]);
   const buttonRef = useRef(null);
   const router = useRouter();
+  
+  // Mock product images - in a real app, these would come from the product data
+  const productImages = [
+    { url: singleProduct?.thumbnail_url || '', alt: singleProduct?.name || '' },
+    { url: '/beanie.webp', alt: 'Beanie side view' },
+    { url: '/beanie.webp', alt: 'Beanie back view' },
+  ];
 
   useEffect(() => {
     if (!singleProduct) {
       router.push("/shop");
     }
   }, [singleProduct, router]);
-
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -36,54 +66,123 @@ const ProductPage = () => {
     };
   }, []);
 
-
+  // Get similar products
+  useEffect(() => {
+    if (multipleProducts.length > 0 && singleProduct) {
+      const filtered = multipleProducts
+        .filter(product => product.id !== singleProduct.id)
+        .slice(0, 4); // Limit to 4 similar products
+      setSimilarProducts(filtered);
+    }
+    
+    // Fallback: Fetch products if not available in context
+    if (multipleProducts.length === 0) {
+      fetch('/api/products')
+        .then(res => res.json())
+        .then(data => {
+          if (singleProduct) {
+            const filtered = data
+              .filter((product: APIProduct) => product.id !== singleProduct.id)
+              .slice(0, 4)
+              .map((product: APIProduct) => ({
+                ...product,
+                external_id: product.external_id || '',
+                cartItemId: '',
+                quantity: 0
+              }));
+            setSimilarProducts(filtered);
+          }
+        })
+        .catch(err => console.error('Error fetching similar products:', err));
+    }
+  }, [multipleProducts, singleProduct]);
 
   if (!singleProduct) {
     return <p>Loading...</p>;
   }
 
+  // Handle product click for similar products
+  const handleSimilarProductClick = (product: Product) => {
+    const enhancedProduct = {
+      ...product,
+      cartItemId: product.cartItemId || crypto.randomUUID(),
+      quantity: product.quantity || 1
+    };
+    setContextSingleProduct(enhancedProduct);
+    router.push(`/shop/${product.id}`);
+  };
+
   return (
-        <div className=" pb-10 bg-white/50 relative">
-    <div className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat bg-[url('/beanie.webp')]"> 
-        <div className="absolute inset-0 bg-black opacity-50"></div>
+    <div className="min-h-screen bg-gray-100 pt-[90px]">
+      <div className="max-w-[1240px] mx-auto bg-white p-4">
+        {/* Breadcrumb navigation */}
+        <div className="py-4 text-sm">
+          <Link
+            href="/shop"
+            className="text-gray-600 hover:underline"
+          >
+            Back to Shop
+          </Link>
         </div>
-        <h1 className="text-3xl mt-10 sm:text-6xl font-extrabold text-white absolute top-20 left-1/2 transform -translate-x-1/2">Shop</h1>
-        <p className="text-1xl w-5/6 sm:text-2xl text-center  mt-20 sm:mt-20 font-extrabold text-white absolute top-30 left-1/2 transform -translate-x-1/2">{singleProduct.name}</p>
-       
-
-      <section className="flex flex-row items-center gap-5">
-        <button className="mb-4 px-4 py-2 bg-black rounded" onClick={() => router.push("/shop")}>
-          ← Back to Shop
-        </button>
-        <h1 className="  text-[11vw] text-center font-bold text-white/90 pb-2 lg:hidden">GET IT NOW!</h1>
-      </section>
-      <div className="flex flex-col items-start gap-6 lg:flex-row">
-
-        <section className="flex flex-col items-center gap-4 w-full">
-        <Image 
-          src={singleProduct.thumbnail_url} 
-          alt={singleProduct.name} 
-          width={500} 
-          height={500} 
-          className="w-auto h-auto object-cover rounded" 
-        />
-        <h1 className=" hidden text-[76px] text-center font-bold text-white/90  lg:block">GET IT NOW!</h1>
-      </section>
-
-        <div className="flex flex-col w-full gap-4">
-
-          <h1 className="text-[50px] text-center font-bold text-black py-5 uppercase">{singleProduct.name}</h1>
-     
-            <section className=" bg-white/90 p-5 rounded-lg">
-              <p className="text-black text-lg py-2 text-center">{DEFAULT_PRODUCT_DETAILS.description}</p>
-              <div className="flex flex-row justify-between items-center gap-4">
-              <p className="text-black py-10"> <span className="font-bold text-xl">Features:</span> {DEFAULT_PRODUCT_DETAILS.features.map((feature, index) => <li key={index}>{feature}</li>)}</p>
-              <p className=" bg-black p-5 rounded-3xl w-content h-content text-white text-4xl font-oswald text-center mr-10">{singleProduct.price} SEK </p>
-              </div>
-              <p className="text-black py-0 text-sm">Made on demand</p>
+        
+        <div className="flex flex-col md:flex-row gap-8">
+          {/* Left side - Product images */}
+          <div className="md:w-2/3">
+            <div className="mb-6">
+              <Image 
+                src={productImages[selectedImage].url} 
+                alt={productImages[selectedImage].alt} 
+                width={700} 
+                height={700} 
+                className="w-full h-auto object-contain bg-gray-50" 
+              />
+            </div>
+            
+            {/* Thumbnail images */}
+            <div className="flex space-x-2">
+              {productImages.map((image, index) => (
+                <div 
+                  key={index}
+                  className={`border-2 ${selectedImage === index ? 'border-black' : 'border-gray-200'} cursor-pointer`}
+                  onClick={() => setSelectedImage(index)}
+                >
+                  <Image 
+                    src={image.url} 
+                    alt={`Thumbnail ${index + 1}`} 
+                    width={80} 
+                    height={80} 
+                    className="w-20 h-20 object-cover" 
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Right side - Product info */}
+          <div className="md:w-1/3">
+            <div className="mb-6">
+              <h2 className="text-sm uppercase text-gray-500 mb-2">ABOUT</h2>
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">{singleProduct.name}</h1>
+              <p className="text-2xl font-medium text-gray-900">{singleProduct.price} SEK</p>
+            </div>
+            
+            <div className="mb-6">
+              <p className="text-gray-700">{DEFAULT_PRODUCT_DETAILS.description}</p>
+            </div>
+            
+            <div className="mb-6">
+              <h2 className="text-sm uppercase text-gray-500 mb-2">Features</h2>
+              <ul className="list-disc pl-5 text-gray-700">
+                {DEFAULT_PRODUCT_DETAILS.features.map((feature, index) => (
+                  <li key={index} className="mb-1">{feature}</li>
+                ))}
+              </ul>
+            </div>
+            
+            <div className="mb-6">
               <button 
                 ref={buttonRef}
-                className=" w-full px-4 lg:w-1/2 font-bold py-2 bg-black rounded cursor-pointer" 
+                className="w-full bg-black text-white py-3 font-medium hover:bg-gray-800 transition" 
                 onClick={() => {
                   addProduct(singleProduct);
                   setCartOpen(true); 
@@ -91,25 +190,86 @@ const ProductPage = () => {
               >
                 Add to Cart
               </button>
-              <p className="text-red-500 font-bold py-0 text-sm">PAYMENT OPTIONS IMAGES</p>
-
-            </section>
+            </div>
+            
+            {/* Payment options */}
+            <div className="mb-6 text-center">
+              <p className="text-sm text-gray-500 mb-2">Payment options:</p>
+              <div className="flex justify-center space-x-2">
+                <div className="w-10 h-6 bg-gray-200 rounded"></div>
+                <div className="w-10 h-6 bg-gray-200 rounded"></div>
+                <div className="w-10 h-6 bg-gray-200 rounded"></div>
+              </div>
+            </div>
+            
+            {/* Why shop at Beanify section */}
+            <div className="bg-gray-50 p-4 rounded">
+              <h2 className="font-semibold mb-2 text-gray-900">Why shop at Beanify:</h2>
+              <ul className="text-sm space-y-2 text-gray-700">
+                <li className="flex items-center">
+                  <span className="text-green-500 mr-2">●</span>
+                  Quality products
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-500 mr-2">●</span>
+                  Free shipping over 399 kr
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-500 mr-2">●</span>
+                  Free returns
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-500 mr-2">●</span>
+                  Secure payment
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
+        
+        {/* Alternative products section */}
+        {similarProducts.length > 0 && (
+          <div className="mt-16">
+            <h2 className="text-xl font-semibold mb-6 border-b pb-2 text-gray-900">You might also like</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {similarProducts.map((product: Product) => (
+                <div 
+                  key={product.id} 
+                  className="border border-gray-200 bg-white p-2 cursor-pointer hover:shadow-md transition"
+                  onClick={() => handleSimilarProductClick(product)}
+                >
+                  <div className="bg-gray-50 mb-2">
+                    <Image 
+                      src={product.thumbnail_url} 
+                      alt={product.name} 
+                      width={200} 
+                      height={200} 
+                      className="w-full h-40 object-contain" 
+                    />
+                  </div>
+                  <h3 className="font-medium text-sm text-gray-900">{product.name}</h3>
+                  <p className="text-sm text-gray-900">{product.price} SEK</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
+      
+      {/* Sticky add to cart button */}
       {!isButtonVisible && (
-        <div className="fixed bottom-0 left-0 w-full bg-transparent text-white p-4 flex justify-center">
-            <button
-              className="w-full px-4 lg:w-1/2 font-bold py-2 bg-black rounded cursor-pointer"
-              onClick={() => {
-                addProduct(singleProduct);
-                setCartOpen(true); 
-              }}
-            >
-              Add to Cart
-            </button>
+        <div className="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-md p-4 flex justify-center z-50">
+          <button
+            className="w-full max-w-md bg-black text-white py-3 font-medium"
+            onClick={() => {
+              addProduct(singleProduct);
+              setCartOpen(true); 
+            }}
+          >
+            Add to Cart - {singleProduct.price} SEK
+          </button>
         </div>
       )}
-      
     </div>
   );
 };
