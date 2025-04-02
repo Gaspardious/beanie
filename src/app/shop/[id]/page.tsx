@@ -6,6 +6,7 @@ import { useEffect, useState, useRef } from "react";
 import { DEFAULT_PRODUCT_DETAILS } from "../../../../components/ProductDetails/ProductDetails";
 import Link from "next/link";
 
+// Define Product type to match the one in ProductContext
 type Product = {
   id: number;
   name: string;
@@ -16,6 +17,7 @@ type Product = {
   price: number;
 };
 
+// Define type for API product data that might be missing some fields
 type APIProduct = {
   id: number;
   name: string;
@@ -32,9 +34,8 @@ const ProductPage = () => {
   const [similarProducts, setSimilarProducts] = useState<Product[]>([]);
   const buttonRef = useRef(null);
   const router = useRouter();
-
-
   
+  // Mock product images - in a real app, these would come from the product data
   const productImages = [
     { url: singleProduct?.thumbnail_url || '', alt: singleProduct?.name || '' },
   ];
@@ -63,6 +64,7 @@ const ProductPage = () => {
     };
   }, []);
 
+  // Get similar products
   useEffect(() => {
     if (multipleProducts.length > 0 && singleProduct) {
       const filtered = multipleProducts
@@ -109,10 +111,10 @@ const ProductPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 pt-[123px]">
+    <div className="min-h-screen bg-gray-100 pt-[120px]">
       <div className="max-w-[1240px] mx-auto bg-white p-4">
         {/* Breadcrumb navigation */}
-        <div className="pb-4 text-xs">
+        <div className="py-2 text-xs">
           <Link
             href="/shop"
             className="text-white hover:underline px-3 py-1 bg-black/80 "
@@ -124,7 +126,7 @@ const ProductPage = () => {
         <div className="flex flex-col md:flex-row gap-8">
           {/* Left side - Product images */}
           <div className="md:w-2/3">
-            <div className="mb-2 border-2">
+            <div className="mb-6">
               <Image 
                 src={productImages[selectedImage].url} 
                 alt={productImages[selectedImage].alt} 
@@ -139,7 +141,7 @@ const ProductPage = () => {
               {productImages.map((image, index) => (
                 <div 
                   key={index}
-                  className={`border-1 ${selectedImage === index ? 'border-black' : 'border-gray-200'} cursor-pointer`}
+                  className={`border-2 ${selectedImage === index ? 'border-black' : 'border-gray-200'} cursor-pointer`}
                   onClick={() => setSelectedImage(index)}
                 >
                   <Image 
@@ -167,7 +169,7 @@ const ProductPage = () => {
             </div>
             
             <div className="mb-6">
-              <h2 className="text-sm uppercase text-orange-500 mb-2">Features</h2>
+              <h2 className="text-sm uppercase text-gray-500 mb-2">Features</h2>
               <ul className="list-disc pl-5 text-gray-700">
                 {DEFAULT_PRODUCT_DETAILS.features.map((feature, index) => (
                   <li key={index} className="mb-1">{feature}</li>
@@ -175,7 +177,7 @@ const ProductPage = () => {
               </ul>
             </div>
             
-            <div className="mb-2">
+            <div className="mb-6">
               <button 
                 ref={buttonRef}
                 className="w-full bg-black text-white py-3 font-medium hover:bg-gray-800 transition" 
@@ -184,7 +186,7 @@ const ProductPage = () => {
                   setCartOpen(true); 
                 }}
               >
-                ADD TO CART
+                Add to Cart
               </button>
             </div>
             
@@ -300,7 +302,8 @@ const ProductPage = () => {
               addProduct(singleProduct);
               setCartOpen(true); 
             }}
-          > ADD TO CART
+          >
+            Add to Cart SEK
           </button>
         </div>
       )}
