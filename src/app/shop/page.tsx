@@ -67,7 +67,7 @@ const Shop = () => {
 
       <div className="container mx-auto p-4">
         {error && <p className="text-red-500">{error}</p>}
-        <ul className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        <ul className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
           {loading ? (
             [...Array(8)].map((_, index) => (
               <li key={index}>
@@ -78,13 +78,13 @@ const Shop = () => {
             products.map((product) => (
               <li
                 key={product.id}
-                className="p-4 border-2 border-gray-300 rounded-lg shadow-lg bg-white flex flex-col items-center cursor-pointer hover:border-gray-700 transition-all duration-200"
+                className="p-4 border-2 border-gray-300 rounded shadow-lg bg-white flex flex-col items-center cursor-pointer hover:border-gray-400 transition-all duration-200"
                 onClick={() => {handleProductClick(product); 
                 }}
               >
                 <Image src={product.thumbnail_url} alt={product.name} width={500} height={500} className="w-auto h-auto object-cover rounded mb-2" />
-                <h2 className="text-lg font-bold text-center text-black">{product.name}</h2>
-                <p className="text-black">{typeof product.price === 'number' ? `${product.price} SEK` : '0 SEK'}</p>
+                <h2 className="text-md font-bold text-center text-black">{product.name}</h2>
+                <p className="text-black text-sm">{typeof product.price === 'number' ? `${product.price} SEK` : '0 SEK'}</p>
               </li>
             ))
           )}

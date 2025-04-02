@@ -60,11 +60,11 @@ const Integritetspolicy = () => {
         <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> För att vi ska få behandla dina personuppgifter, krävs att vi har angivit ett uttryckligt och berättigat syfte med behandlingen. Personuppgifterna får sedan inte behandlas på ett sätt som är oförenligt med det ursprungliga syftet. Utöver detta, måste vi ha stöd i lag, så kallad rättslig grund, för att få behandla personuppgifter.  <br /> <br />
         De behandlingar av personuppgifter som vi utför, stöder vi på följande rättsliga grunder samt samtycke:  <br /> <br />
 
-        a) Behandling av dina personuppgifter är nödvändig för att ingå eller fullgöra avtalet med dig.  <br /> <br />
+        a Behandling av dina personuppgifter är nödvändig för att ingå eller fullgöra avtalet med dig.  <br /> <br />
 
-        b) Behandlingen av dina personuppgifter är nödvändig för att vi ska kunna fullgöra en rättslig förpliktelse, t.ex. att spara personuppgifter för bokföringsändamål.  <br /> <br />
+        b Behandlingen av dina personuppgifter är nödvändig för att vi ska kunna fullgöra en rättslig förpliktelse, t.ex. att spara personuppgifter för bokföringsändamål.  <br /> <br />
 
-        c) Vi bedömer, efter en så kallad intresseavvägning, att våra intressen av att få behandla dina personuppgifter väger tyngre än din rätt till integritetsskydd.  <br /> <br />
+        c Vi bedömer, efter en så kallad intresseavvägning, att våra intressen av att få behandla dina personuppgifter väger tyngre än din rätt till integritetsskydd.  <br /> <br />
 
         För att vi ska kunna fullgöra avtalet med dig behöver vi behandla och hantera dina personuppgifter. Nedan följer exempel på för vilka ändamål vi behandlar dina personuppgifter och med vilken rättslig grund vi gör detta.
         </p>

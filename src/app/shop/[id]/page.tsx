@@ -38,8 +38,6 @@ const ProductPage = () => {
   // Mock product images - in a real app, these would come from the product data
   const productImages = [
     { url: singleProduct?.thumbnail_url || '', alt: singleProduct?.name || '' },
-    { url: '/beanie.webp', alt: 'Beanie side view' },
-    { url: '/beanie.webp', alt: 'Beanie back view' },
   ];
 
   useEffect(() => {
@@ -113,13 +111,13 @@ const ProductPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 pt-[90px]">
+    <div className="min-h-screen bg-gray-100 pt-[120px]">
       <div className="max-w-[1240px] mx-auto bg-white p-4">
         {/* Breadcrumb navigation */}
-        <div className="py-4 text-sm">
+        <div className="py-2 text-xs">
           <Link
             href="/shop"
-            className="text-gray-600 hover:underline"
+            className="text-white hover:underline px-3 py-1 bg-black/80 "
           >
             Back to Shop
           </Link>
@@ -258,7 +256,7 @@ const ProductPage = () => {
       
       {/* Sticky add to cart button */}
       {!isButtonVisible && (
-        <div className="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-md p-4 flex justify-center z-50">
+        <div className="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-md p-4 flex justify-center z-40">
           <button
             className="w-full max-w-md bg-black text-white py-3 font-medium"
             onClick={() => {
@@ -266,7 +264,7 @@ const ProductPage = () => {
               setCartOpen(true); 
             }}
           >
-            Add to Cart - {singleProduct.price} SEK
+            Add to Cart SEK
           </button>
         </div>
       )}
