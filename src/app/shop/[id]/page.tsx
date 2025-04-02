@@ -194,14 +194,53 @@ const ProductPage = () => {
             <div className="mb-6 text-center">
               <p className="text-sm text-gray-500 mb-2">Payment options:</p>
               <div className="flex justify-center space-x-2">
-                <div className="w-10 h-6 bg-gray-200 rounded"></div>
-                <div className="w-10 h-6 bg-gray-200 rounded"></div>
-                <div className="w-10 h-6 bg-gray-200 rounded"></div>
+                <div className="w-10 h-6 bg-gray-200 rounded">
+                <Image 
+                  src="/images/visa.svg" 
+                  alt="Hero Beanie" 
+                  width={50} 
+                  height={50} 
+                  priority 
+                  className="object-cover w-full h-full"
+                />
+                </div>
+                <div className="w-10 h-6 bg-gray-200 rounded">
+                <Image 
+                  src="/images/klarna.svg" 
+                  alt="Hero Beanie" 
+                  width={50} 
+                  height={50} 
+                  priority 
+                  className="object-cover w-full h-full"
+                />
+                </div>
+                <div className="w-10 h-6 bg-gray-200 rounded">
+
+                <Image 
+                  src="/images/stripe.svg" 
+                  alt="Hero Beanie" 
+                  width={50} 
+                  height={50} 
+                  priority 
+                  className="object-cover w-full h-full"
+                />
+                </div>
+                <div className="w-10 h-6 bg-gray-200 rounded">
+
+                <Image 
+                  src="/images/mastercard.svg" 
+                  alt="Hero Beanie" 
+                  width={50} 
+                  height={50} 
+                  priority 
+                  className="object-cover w-full h-full"
+                />
+                </div>
               </div>
             </div>
             
             {/* Why shop at Beanify section */}
-            <div className="bg-gray-50 p-4 rounded">
+            <div className="bg-gray-100 p-4 rounded">
               <h2 className="font-semibold mb-2 text-gray-900">Why shop at Beanify:</h2>
               <ul className="text-sm space-y-2 text-gray-700">
                 <li className="flex items-center">

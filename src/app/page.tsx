@@ -35,8 +35,8 @@ export default function Home() {
         </div>
       </div>
 
-      <Info BigText="The Classic Beanie" SmallText="The classic beanie is a timeless and classic accessory that never goes out of style." positionImage="object-cover" paddingImage="p-1" ImageSrc="/beanie_black.jpg" BtnText="Beanies →"/>
-      <Info BigText="The Golden Beanie" SmallText="Bold and chic, the golden beanie is the perfect accessory for any occasion." positionImage="object-contain" BtnText="Beanies →" ImageSrc="/beanie_gold.png" paddingImage="p-10" reverse/>
+      <Info BigText="The Classic Beanie" SmallText="The classic beanie is a timeless and classic accessory that never goes out of style." positionImage="object-cover" paddingImage="p-1" ImageSrc="/images/beanie_black.jpg" BtnText="Beanies →"/>
+      <Info BigText="The Golden Beanie" SmallText="Bold and chic, the golden beanie is the perfect accessory for any occasion." positionImage="object-contain" BtnText="Beanies →" ImageSrc="/images/beanie_gold.png" paddingImage="p-10" reverse/>
 
       <div className="flex flex-wrap justify-center gap-2">
         <Reviews customerNumber='Kund #56' customerName="Pierre" heading='5 av 5' text='En grym beanie helt enkelt.' />
