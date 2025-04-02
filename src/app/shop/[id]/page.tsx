@@ -205,18 +205,7 @@ const ProductPage = () => {
                 <div className="w-10 h-6 bg-gray-200 rounded">
                 <Image 
                   src="/images/klarna.svg" 
-                  alt="Hero Beanie" 
-                  width={50} 
-                  height={50} 
-                  priority 
-                  className="object-cover w-full h-full"
-                />
-                </div>
-                <div className="w-10 h-6 bg-gray-200 rounded">
-
-                <Image 
-                  src="/images/stripe.svg" 
-                  alt="Hero Beanie" 
+                  alt="Klarna" 
                   width={50} 
                   height={50} 
                   priority 

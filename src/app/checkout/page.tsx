@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from 'next/link';
-import PaymentForm from '../components/PaymentForm';
 
 const CheckoutPage = () => {
   const router = useRouter();
@@ -436,19 +435,6 @@ const CheckoutPage = () => {
                   <div className="text-sm mb-6">
                     All transactions are secure and encrypted.
                   </div>
-                  <PaymentForm
-                    amount={calculateTotal()}
-                    onSuccess={() => {
-                      // Handle successful payment
-                      alert('Payment successful! Thank you for your order.');
-                      // You might want to redirect to a success page or clear the cart
-                      router.push('/success');
-                    }}
-                    onError={(error) => {
-                      // Handle payment error
-                      alert(error);
-                    }}
-                  />
                 </div>
               )}
             </div>
