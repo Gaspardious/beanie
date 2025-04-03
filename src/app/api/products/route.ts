@@ -35,6 +35,8 @@ export async function GET() {
       }
     });
 
+
+    
     if (!response.ok) {
       return NextResponse.json({ error: "Failed to fetch products" }, { status: response.status });
     }
@@ -47,6 +49,7 @@ export async function GET() {
       // Log sync_product and variants
       console.log('☀️Product sync_product:', product.sync_product);
       console.log('⏱️Product variants:', product.sync_product?.variants);
+      console.log("Fetched Products:", data);
 
       // Use fallback price based on product name
       const price = FALLBACK_PRICES[product.name] || 0;

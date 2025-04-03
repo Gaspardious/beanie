@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Oswald, Nunito_Sans } from "next/font/google";
+import { Oswald, Nunito_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
@@ -22,14 +22,9 @@ const oswald = Oswald({
   weight: ["200", "400", "700"]
 });
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
 });
 
 export const metadata: Metadata = {
@@ -47,12 +42,16 @@ export default function RootLayout({
     <ProductProvider>
     <html lang="en" className="bg-[#1c1c1c]">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${nunitoSans.variable} ${oswald.variable}  antialiased`}
+        className={`${inter.variable} ${nunitoSans.variable} ${oswald.variable} font-sans antialiased`}
       >
-        <head>
-        <Script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="c21a8c41-a011-4abf-9868-7c786ec6fb78" data-blockingmode="auto" type="text/javascript" defer></Script>
-        </head>
-
+        <Script 
+          id="Cookiebot" 
+          src="https://consent.cookiebot.com/uc.js" 
+          data-cbid="c21a8c41-a011-4abf-9868-7c786ec6fb78" 
+          data-blockingmode="auto" 
+          type="text/javascript" 
+          defer
+        />
         <Banner />
         <Header />
         {children}

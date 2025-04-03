@@ -128,7 +128,6 @@ const Cart: React.FC<CartProps> = ({ open, setOpen }) => {
               <div className="flex justify-center gap-4 mb-8">
                 <Image src="/images/visa.svg" alt="Visa" width={32} height={20} className="opacity-50 hover:opacity-100 transition-opacity" />
                 <Image src="/images/mastercard.svg" alt="Mastercard" width={32} height={20} className="opacity-50 hover:opacity-100 transition-opacity" />
-                <Image src="/images/stripe.svg" alt="PayPal" width={32} height={20} className="opacity-50 hover:opacity-100 transition-opacity" />
                 <Image src="/images/klarna.svg" alt="Klarna" width={32} height={20} className="opacity-50 hover:opacity-100 transition-opacity" />
               </div>
 
