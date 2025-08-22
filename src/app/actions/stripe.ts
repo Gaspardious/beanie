@@ -11,6 +11,8 @@ interface Product {
   price: number;
   quantity: number;
   external_id?: string;
+  printful_variant_id?: string;
+  printful_product_id?: string;
 }
 
 export async function fetchClientSecret(products: Product[]) {
@@ -24,17 +26,17 @@ export async function fetchClientSecret(products: Product[]) {
         name: product.name,
         images: [product.thumbnail_url],
         metadata: {
-          printful_product_id: product.external_id || product.id.toString(),
+          printful_product_id: product.printful_product_id || product.external_id || product.id.toString(),
+          printful_variant_id: product.printful_variant_id || '1',
           external_id: product.external_id || product.id.toString(),
-          printful_variant_id: '1' // Default variant ID
+          // Add sync_variant_id for Printful API
+          sync_variant_id: product.printful_variant_id || '1'
         }
       },
       unit_amount: product.price * 100, // Convert to cents
     },
     quantity: product.quantity,
   }))
-  
-
 
   // Create Checkout Sessions from body params.
   const session = await stripe.checkout.sessions.create({
@@ -51,7 +53,12 @@ export async function fetchClientSecret(products: Product[]) {
     // Add metadata to the session for webhook processing
     metadata: {
       source: 'beanie_shop',
-      products: JSON.stringify(products.map(p => ({ id: p.id, external_id: p.external_id })))
+      products: JSON.stringify(products.map(p => ({ 
+        id: p.id, 
+        external_id: p.external_id,
+        printful_variant_id: p.printful_variant_id,
+        printful_product_id: p.printful_product_id
+      })))
     },
     // Enable automatic tax calculation if needed
     automatic_tax: { enabled: true },
