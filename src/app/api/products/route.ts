@@ -15,11 +15,9 @@ interface PrintfulProduct {
   name: string;
   thumbnail_url: string;
   external_id?: string;
-  sync_product?: {
-    variants?: Array<{
-      retail_price: string | number;
-    }>;
-  };
+  variants: number;
+  synced: number;
+  is_ignored: boolean;
   description?: string;
 }
 
@@ -44,19 +42,32 @@ export async function GET() {
     const data = await response.json();
     console.log('Raw API response structure:', JSON.stringify(data, null, 2));
 
-    // Transform the data to ensure we have valid prices
+    // Transform the data to ensure we have valid prices and variant IDs
     const transformedData = (data.result || []).map((product: PrintfulProduct) => {
-      // Log sync_product and variants
-      console.log('☀️Product sync_product:', product.sync_product);
-      console.log('⏱️Product variants:', product.sync_product?.variants);
+      // Log product data
+      console.log('📦 Product:', product.name);
       console.log("Fetched Products:", data);
 
       // Use fallback price based on product name
       const price = FALLBACK_PRICES[product.name] || 0;
       
+      // Map product IDs to their correct variant IDs
+      const variantIdMap: Record<number, string> = {
+        366639172: '4615175066',
+        366639101: '4615174164',
+        366062229: '4609721506',
+        366026939: '4608984062',
+        366025292: '4608936708',
+        366022204: '4608848763'
+      };
+      
+      const printfulVariantId = variantIdMap[product.id] || '4615175066';
+      
       return {
         ...product,
-        price
+        price,
+        printful_variant_id: printfulVariantId,
+        printful_product_id: product.id.toString()
       };
     });
     

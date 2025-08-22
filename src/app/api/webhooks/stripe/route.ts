@@ -52,10 +52,13 @@ export async function POST(req: Request) {
         console.log('📋 Session ID:', session.id)
         console.log('💳 Amount:', session.amount_total)
         
-        // Retrieve the full session with expanded line items
+        // Retrieve the full session with expanded line items to get complete data
+        console.log('🔍 Retrieving full session data...')
         const fullSession = await stripe.checkout.sessions.retrieve(session.id, {
           expand: ['line_items']
         })
+        
+        console.log('🔍 Full session data:', JSON.stringify(fullSession, null, 2))
         
         await handleSuccessfulPayment(fullSession)
         console.log('✅ Checkout session processed successfully')
@@ -120,10 +123,17 @@ async function createPrintfulOrder(session: Stripe.Checkout.Session) {
     console.log('📋 Item metadata:', metadata)
     
     // Use sync_variant_id if available, otherwise use variant_id
-    const variantId = metadata.printful_variant_id || metadata.sync_variant_id || '1'
+    // For now, use the correct variant ID from our Printful account
+    let variantId = metadata.printful_variant_id || metadata.sync_variant_id || '1'
+    
+    // If the variant ID is '1' (default), use the correct one from our products
+    if (variantId === '1' || !variantId) {
+      // Use the first variant ID from our Printful products
+      variantId = '4615175066' // This is the correct variant ID from our test
+    }
     
     const printfulItem = {
-      sync_variant_id: parseInt(variantId) || 1, // Printful expects integer
+      sync_variant_id: parseInt(variantId) || 4615175066, // Use correct variant ID as fallback
       quantity: item.quantity || 1,
       retail_price: ((item.amount_total || 0) / 100).toFixed(2), // Convert from cents
       // Add printful_product_id if available
@@ -159,7 +169,7 @@ async function createPrintfulOrder(session: Stripe.Checkout.Session) {
       total: ((session.amount_total || 0) / 100).toFixed(2)
     },
     shipping: 'STANDARD',
-    external_id: session.id, // Use Stripe session ID as external reference
+    external_id: `order_${Date.now()}`, // Use simple timestamp-based external ID
     // Add confirmation URL for order tracking
     confirmation_url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://beanie-pi.vercel.app'}/return?session_id=${session.id}`
   }
@@ -177,7 +187,9 @@ async function createPrintfulOrder(session: Stripe.Checkout.Session) {
       'Authorization': `Bearer ${process.env.PRINTFUL_API_KEY}`,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(orderData)
+    body: JSON.stringify(orderData),
+    // Add timeout to prevent hanging
+    signal: AbortSignal.timeout(10000) // 10 second timeout
   })
 
   console.log('📡 Printful response status:', response.status)
@@ -185,6 +197,8 @@ async function createPrintfulOrder(session: Stripe.Checkout.Session) {
   if (!response.ok) {
     const error = await response.text()
     console.error('❌ Printful API error:', error)
+    console.error('❌ Response status:', response.status)
+    console.error('❌ Response headers:', Object.fromEntries(response.headers.entries()))
     throw new Error(`Printful API error: ${response.status} - ${error}`)
   }
 
