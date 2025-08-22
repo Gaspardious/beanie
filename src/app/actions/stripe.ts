@@ -51,7 +51,17 @@ export async function fetchClientSecret(products: Product[]) {
     shipping_address_collection: {
       allowed_countries: ['SE', 'NO', 'DK', 'FI'],
     },
+    // Add metadata to the session for webhook processing
+    metadata: {
+      source: 'beanie_shop',
+      products: JSON.stringify(products.map(p => ({ id: p.id, external_id: p.external_id })))
+    },
+    // Enable automatic tax calculation if needed
+    automatic_tax: { enabled: true },
+    // Add customer creation
+    customer_creation: 'always',
   })
 
+  console.log('Stripe session created:', session.id)
   return session.client_secret!
 }

@@ -8,7 +8,13 @@ export async function POST(req: Request) {
   const signature = (await headers()).get('stripe-signature')
 
   if (!signature) {
+    console.error('Webhook signature missing')
     return NextResponse.json({ error: 'No signature' }, { status: 400 })
+  }
+
+  if (!process.env.STRIPE_WEBHOOK_SECRET) {
+    console.error('STRIPE_WEBHOOK_SECRET not configured')
+    return NextResponse.json({ error: 'Webhook secret not configured' }, { status: 500 })
   }
 
   let event
@@ -17,21 +23,35 @@ export async function POST(req: Request) {
     event = stripe.webhooks.constructEvent(
       body,
       signature,
-      process.env.STRIPE_WEBHOOK_SECRET!
+      process.env.STRIPE_WEBHOOK_SECRET
     )
   } catch (err) {
     console.error('Webhook signature verification failed:', err)
     return NextResponse.json({ error: 'Invalid signature' }, { status: 400 })
   }
 
+  console.log('Webhook event received:', event.type, event.id)
+
   // Handle the event
-  switch (event.type) {
-    case 'checkout.session.completed':
-      const session = event.data.object as Stripe.Checkout.Session
-      await handleSuccessfulPayment(session)
-      break
-    default:
-      console.log(`Unhandled event type ${event.type}`)
+  try {
+    switch (event.type) {
+      case 'checkout.session.completed':
+        const session = event.data.object as Stripe.Checkout.Session
+        console.log('Processing checkout.session.completed for session:', session.id)
+        await handleSuccessfulPayment(session)
+        break
+      case 'payment_intent.succeeded':
+        console.log('Payment intent succeeded:', event.data.object.id)
+        break
+      case 'payment_intent.payment_failed':
+        console.log('Payment intent failed:', event.data.object.id)
+        break
+      default:
+        console.log(`Unhandled event type ${event.type}`)
+    }
+  } catch (error) {
+    console.error('Error processing webhook event:', error)
+    return NextResponse.json({ error: 'Webhook processing failed' }, { status: 500 })
   }
 
   return NextResponse.json({ received: true })
@@ -40,6 +60,8 @@ export async function POST(req: Request) {
 async function handleSuccessfulPayment(session: Stripe.Checkout.Session) {
   try {
     console.log('Processing successful payment:', session.id)
+    console.log('Session metadata:', session.metadata)
+    console.log('Customer details:', session.customer_details)
     
     // Create order in Printful
     const printfulOrder = await createPrintfulOrder(session)
@@ -49,8 +71,13 @@ async function handleSuccessfulPayment(session: Stripe.Checkout.Session) {
     // Here you could also save order to your database
     // await saveOrderToDatabase(session, printfulOrder)
     
+    // Note: Cart will be cleared on the client side after successful payment
+    // The cart state is managed in localStorage and will be cleared when user
+    // completes the checkout flow
+    
   } catch (error) {
     console.error('Error processing payment:', error)
+    throw error // Re-throw to ensure webhook fails
   }
 }
 
@@ -61,10 +88,19 @@ async function createPrintfulOrder(session: Stripe.Checkout.Session) {
     throw new Error('No line items found in session')
   }
   
+  console.log('Line items data:', line_items.data)
+  
   // Transform line items to Printful format
   const items = line_items.data.map((item: Stripe.LineItem) => {
-    const product = item.price?.product
-    const metadata = (product && typeof product === 'object' && 'metadata' in product) ? product.metadata : {}
+    console.log('Processing line item:', item)
+    
+    // Get metadata from the price's product
+    let metadata = {}
+    if (item.price?.product && typeof item.price.product === 'object' && 'metadata' in item.price.product) {
+      metadata = (item.price.product as any).metadata
+    }
+    
+    console.log('Item metadata:', metadata)
     
     return {
       sync_product_id: metadata.printful_product_id || metadata.external_id || 'default',
@@ -100,6 +136,13 @@ async function createPrintfulOrder(session: Stripe.Checkout.Session) {
     external_id: session.id // Use Stripe session ID as external reference
   }
 
+  console.log('Creating Printful order with data:', orderData)
+
+  if (!process.env.PRINTFUL_API_KEY) {
+    console.error('PRINTFUL_API_KEY not configured')
+    throw new Error('Printful API key not configured')
+  }
+
   const response = await fetch('https://api.printful.com/orders', {
     method: 'POST',
     headers: {
@@ -111,7 +154,8 @@ async function createPrintfulOrder(session: Stripe.Checkout.Session) {
 
   if (!response.ok) {
     const error = await response.text()
-    throw new Error(`Printful API error: ${error}`)
+    console.error('Printful API error response:', error)
+    throw new Error(`Printful API error: ${response.status} - ${error}`)
   }
 
   return await response.json()

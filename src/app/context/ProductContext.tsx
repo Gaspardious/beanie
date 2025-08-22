@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, ReactNode, useEffect } from "react";
 
 type Product = {
   id: number;
@@ -23,6 +23,7 @@ type ProductContextType = {
   menuCart: boolean;
   setCartOpen: (value: boolean) => void;
   removeProductFromCheckout: (cartItemId: string) => void;
+  clearCart: () => void;
 };
 
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
@@ -32,6 +33,47 @@ export function ProductProvider({ children }: { children: ReactNode }) {
   const [singleProduct, setSingleProduct] = useState<Product | null>(null); 
   const [checkoutProducts, setCheckoutProducts] = useState<Product[]>([]);
   const [menuCart, setCartOpen] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // Load cart from localStorage on mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedCart = localStorage.getItem('beanie-cart');
+      const savedCheckout = localStorage.getItem('beanie-checkout');
+      
+      if (savedCart) {
+        try {
+          setMultipleProducts(JSON.parse(savedCart));
+        } catch (error) {
+          console.error('Error loading cart from localStorage:', error);
+        }
+      }
+      
+      if (savedCheckout) {
+        try {
+          setCheckoutProducts(JSON.parse(savedCheckout));
+        } catch (error) {
+          console.error('Error loading checkout from localStorage:', error);
+        }
+      }
+      
+      setIsLoaded(true);
+    }
+  }, []);
+
+  // Save cart to localStorage whenever it changes
+  useEffect(() => {
+    if (isLoaded && typeof window !== 'undefined') {
+      localStorage.setItem('beanie-cart', JSON.stringify(multipleProducts));
+    }
+  }, [multipleProducts, isLoaded]);
+
+  // Save checkout to localStorage whenever it changes
+  useEffect(() => {
+    if (isLoaded && typeof window !== 'undefined') {
+      localStorage.setItem('beanie-checkout', JSON.stringify(checkoutProducts));
+    }
+  }, [checkoutProducts, isLoaded]);
 
   // ✅ Add a product to the cart
   const addProduct = (product: Product) => {
@@ -76,8 +118,13 @@ export function ProductProvider({ children }: { children: ReactNode }) {
     setCheckoutProducts((prev) => prev.filter((product) => product.cartItemId !== cartItemId));
   };
 
+  const clearCart = () => {
+    setMultipleProducts([]);
+    setCheckoutProducts([]);
+  };
+
   return (
-    <ProductContext.Provider value={{ multipleProducts, setMultipleProducts, singleProduct, setSingleProduct, addProduct, removeProduct, menuCart, checkoutProducts, setCheckoutProducts, setCartOpen, removeProductFromCheckout }}>
+    <ProductContext.Provider value={{ multipleProducts, setMultipleProducts, singleProduct, setSingleProduct, addProduct, removeProduct, menuCart, checkoutProducts, setCheckoutProducts, setCartOpen, removeProductFromCheckout, clearCart }}>
       {children}
     </ProductContext.Provider>
   );
