@@ -7,6 +7,25 @@ interface ReturnPageProps {
   searchParams: Promise<{ session_id?: string }>;
 }
 
+// Client component to clear cart
+'use client'
+import { useEffect } from 'react'
+import { useProduct } from '../context/ProductContext'
+
+function CartClearer({ status }: { status: string }) {
+  const { clearCart } = useProduct()
+
+  useEffect(() => {
+    if (status === 'complete') {
+      // Clear cart after successful payment
+      clearCart()
+      console.log('Cart cleared after successful payment')
+    }
+  }, [status, clearCart])
+
+  return null
+}
+
 export default async function Return({ searchParams }: ReturnPageProps) {
   const { session_id } = await searchParams
 
@@ -19,6 +38,7 @@ export default async function Return({ searchParams }: ReturnPageProps) {
 
   const { status, customer_details } = session
   const customerEmail = customer_details?.email || 'customer@example.com'
+  const paymentStatus = status || 'unknown'
 
   if (status === 'open') {
     return redirect('/')
@@ -27,6 +47,7 @@ export default async function Return({ searchParams }: ReturnPageProps) {
   if (status === 'complete') {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+        <CartClearer status={paymentStatus} />
         <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-center">
           <div className="mb-6">
             <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
@@ -65,6 +86,7 @@ export default async function Return({ searchParams }: ReturnPageProps) {
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+              <CartClearer status={paymentStatus} />
       <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-center">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">
           Payment Status: {status}
