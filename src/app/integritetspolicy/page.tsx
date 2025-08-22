@@ -9,146 +9,146 @@ const Integritetspolicy = () => {
           <div className="absolute inset-0 bg-black opacity-50"></div>
           </div>
         <h1 className="text-3xl h-screen mt-5 sm:text-6xl font-extrabold text-white absolute top-20 left-1/2 transform -translate-x-1/2">Integritetspolicy</h1>
-        <p className="text-1xl w-5/6 sm:text-2xl text-center h-screen mt-15 sm:mt-20 font-extrabold text-white absolute top-30 left-1/2 transform -translate-x-1/2">Från den 25 maj 2018 har personuppgiftslagen (PUL) ersatts av den nya dataskyddsförordningen (GDPR).</p>
+        <p className="text-1xl w-5/6 sm:text-2xl text-center h-screen mt-15 sm:mt-20 font-extrabold text-white absolute top-30 left-1/2 transform -translate-x-1/2">Since May 25, 2018, the Personal Data Act (PUL) has been replaced by the new Data Protection Regulation (GDPR).</p>
        
         <div className="flex flex-col items-center justify-center h-full gap-5"> 
 
-        <p className='text-black w-3/4 sm:text-lg sm:w-2/4 pt-10'>Från den 25 maj 2018 har personuppgiftslagen (PUL) ersatts av den nya dataskyddsförordningen (GDPR). Syftet med PUL har varit att skydda människor mot att deras personliga integritet kränks när deras personuppgifter behandlas. GDPR ställer högre krav på hur vi som organisation behandlar dina personuppgifter och ger dig bättre möjligheter att påverka vår hantering.
+        <p className='text-black w-3/4 sm:text-lg sm:w-2/4 pt-10'>Since May 25, 2018, the Personal Data Act (PUL) has been replaced by the new Data Protection Regulation (GDPR). The purpose of PUL has been to protect people against their personal integrity being violated when their personal data is processed. GDPR sets higher requirements for how we as an organization process your personal data and gives you better opportunities to influence our handling.
         <br /> <br />
-        I policyn beskriver vi varför vi behandlar dina personuppgifter, vilka personuppgifter vi behandlar, vilken laglig grund vi stödjer behandlingen på och hur länge uppgifterna sparas. Vi beskriver även hur du kan påverka behandlingen genom att utöva dina rättigheter. Vi ger dig även information var du ska vända dig om du inte är nöjd med vår hantering. Det är viktigt att du tar del av och förstår integritetspolicyn. Du är alltid välkommen att kontakta oss vid eventuella frågor.
+        In the policy, we describe why we process your personal data, which personal data we process, which legal basis we support the processing on and how long the data is stored. We also describe how you can influence the processing by exercising your rights. We also give you information where you can turn to if you are not satisfied with our handling. It is important that you take part of and understand the privacy policy. You are always welcome to contact us if you have any questions.
         </p>
 
         <p className='text-black w-3/4 sm:text-lg sm:w-2/4'><strong>Vi går att nå på följande sätt:</strong> <br /> <br />
         </p>
 
         <address className='text-black w-3/4 sm:text-lg sm:w-2/4'>
-        Allbygg Trestad AB <br />
-        Lövvägen 4 <br />
-        468 30 Vargön <br />
-        073-500 27 33 <br />
-        info@allbygg.se <br />
+        Gaspar Invest AB <br />
+        Ahrenbergsvägen 4C <br />
+        416 73 Göteborg <br />
+        +46 73 350 91 97 <br />
+        dejan.gaspar@gmail.com <br />
       </address> 
 
 
         <p className='text-black w-3/4 sm:text-lg sm:w-2/4'>
-        <h2 className='text-2xl font-bold'>Vad förändringen innebär för dig</h2>
-        I korthet innebär GDPR att… <br /> <br />
+        <h2 className='text-2xl font-bold'>What the change means for you</h2>
+        In short, GDPR means that… <br /> <br />
 
-        …du har rätt att få mer utförlig information om hur vi behandlar dina personuppgifter. Vi ger dig sådan information i personuppgiftspolicyn nedan, <br /> <br />
+        …you have the right to receive more detailed information about how we process your personal data. We give you such information in the privacy policy below, <br /> <br />
 
-        …du får möjlighet att, under vissa förutsättningar, begära att dina personuppgifter flyttas eller att vi begränsar behandlingen, <br /> <br />
+        …you have the opportunity to, under certain conditions, request that your personal data is moved or that we limit the processing, <br /> <br />
 
-        …att du får stärkta möjligheter att ta del av dina personuppgifter och att, under vissa förutsättningar, få dem rättade eller raderade, <br /> <br />
+        …that you have strengthened opportunities to take part in your personal data and that, under certain conditions, get them corrected or deleted, <br /> <br />
 
-        …att du kan godkänna eller motsäga dig viss behandling som vi utför, till exempel för utskick av information som t.ex. nyhetsbrev via e-post.
+        …that you can approve or object to certain processing that we perform, for example for sending information such as newsletters via email.
 
         </p>
 
 
-        <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>1. Information om personuppgifter</h2>
-        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> I denna personuppgiftspolicy kallas vi, med organisationsnummer 556527-0351, för Företaget och är personuppgiftsansvarig. Personuppgifter är uppgifter genom vilka vi direkt eller indirekt kan identifiera dig, t.ex. ditt namn, ditt telefonnummer, din e-postadress.</p>
+        <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>1. Information about personal data</h2>
+        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> In this privacy policy, we are called Gaspar Invest AB and are the data controller. Personal data is information that can directly or indirectly identify you, such as your name, phone number, and email address.</p>
        
-       <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>2. Behandling av personuppgifter</h2>
-        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> Allt vi gör med dina personuppgifter räknas som behandlingar. Det gäller oavsett om vi använder automatiserade system eller inte. Vi behandlar dina personuppgifter i samband med utskick av information, betalningar, hantering av reklamationer, för att kunna uppfylla gällande lagstiftning som t.ex. bokföringslagen, för att skicka nyhetsbrev etc.
+       <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>2. Processing of personal data</h2>
+        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> Everything we do with your personal data is considered processing. This applies regardless of whether we use automated systems or not. We process your personal data in connection with sending information, payments, handling complaints, to comply with applicable legislation such as the Accounting Act, to send newsletters, etc.
         </p>
 
-       <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>3. Personuppgifter som hanteras</h2>
-        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> De personuppgifter som vi samlar in om dig utgörs av kunduppgifter. Det är uppgifter som exempelvis namn, e-postadress, telefonnummer, adressuppgifter samt annan information som lämnats av dig.
+       <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>3. Personal data handled</h2>
+        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> The personal data we collect about you consists of customer data. These are information such as name, email address, phone number, address information, and other information provided by you.
         </p>
 
-       <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>4. Vad uppgifterna används till</h2>
-        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> För att vi ska få behandla dina personuppgifter, krävs att vi har angivit ett uttryckligt och berättigat syfte med behandlingen. Personuppgifterna får sedan inte behandlas på ett sätt som är oförenligt med det ursprungliga syftet. Utöver detta, måste vi ha stöd i lag, så kallad rättslig grund, för att få behandla personuppgifter.  <br /> <br />
-        De behandlingar av personuppgifter som vi utför, stöder vi på följande rättsliga grunder samt samtycke:  <br /> <br />
+       <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>4. What the data is used for</h2>
+        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> In order for us to be able to process your personal data, we must have specified an explicit and legitimate purpose for the processing. The personal data must then not be processed in a way that is incompatible with the original purpose. In addition, we must have support in law, so-called legal basis, in order to be able to process personal data.  <br /> <br />
+        The processing of personal data that we perform, we support on the following legal grounds and consent:  <br /> <br />
 
-        a Behandling av dina personuppgifter är nödvändig för att ingå eller fullgöra avtalet med dig.  <br /> <br />
+        a Processing of your personal data is necessary in order to enter into or fulfill the agreement with you.  <br /> <br />
 
-        b Behandlingen av dina personuppgifter är nödvändig för att vi ska kunna fullgöra en rättslig förpliktelse, t.ex. att spara personuppgifter för bokföringsändamål.  <br /> <br />
+        b The processing of your personal data is necessary in order for us to be able to fulfill a legal obligation, for example to save personal data for accounting purposes.  <br /> <br />
 
-        c Vi bedömer, efter en så kallad intresseavvägning, att våra intressen av att få behandla dina personuppgifter väger tyngre än din rätt till integritetsskydd.  <br /> <br />
+        c We evaluate, after a so-called interest balancing, that our interests in processing your personal data weigh more than your right to privacy protection.  <br /> <br />
 
-        För att vi ska kunna fullgöra avtalet med dig behöver vi behandla och hantera dina personuppgifter. Nedan följer exempel på för vilka ändamål vi behandlar dina personuppgifter och med vilken rättslig grund vi gör detta.
+        In order for us to be able to fulfill the agreement with you, we need to process and handle your personal data. Below are examples of for which purposes we process your personal data and with which legal basis we do this.
         </p>
 
-        <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>Tillhandahållande av tjänster</h2>
-        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> Vi behandlar dina personuppgifter i den omfattning det behövs för att vi ska kunna identifiera dig som kund. Vi behöver även behandla dina personuppgifter för att kunna debitera dig enligt avtalet samt för att kunna vidta inkassoåtgärder om detta behövs för att säkerställa att vår fordran blir betald.  <br /> <br />
-        <em>Rättslig grund av ovan enligt följande: Fullgörande av avtal enligt punkten 1 och Berättigat intresse enligt punkten 3. Vårt berättigade intresse för behandlingen i denna del är att vi säkerställer betalning enligt avtalet med dig.</em>
+        <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>Providing services</h2>
+        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> We process your personal data to the extent necessary for us to be able to identify you as a customer. We also need to process your personal data in order to be able to debit you according to the agreement as well as to be able to take collection actions if this is necessary to ensure that our claim is paid.  <br /> <br />
+        <em>Legal basis of the above according to the following: Fulfillment of the agreement according to point 1 and Legitimate interest according to point 3. Our legitimate interest for the processing in this part is that we ensure payment according to the agreement with you.</em>
         </p>
 
-        <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>Annan kommunikation om tjänster</h2>
-        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> Vi behandlar personuppgifter i samband med annan kommunikation med dig, t.ex. för att tillhandahålla dig information. Det kan t.ex. ske i form av nyhetsbrev som skickas via e-post. Vi behandlar även personuppgifter som vi får från dig när och om du har valt att svara på kundundersökningar som vi har skickat till dig eller som du tagit del av på annat sätt.   <br /> <br />
-        <em>Rättslig grund av ovan enligt följande: Fullgörande av avtal enligt punkten 1 och Berättigat intresse enligt punkten 3. Våra berättigade intressen för behandling av personuppgifter i kundundersökningar är att vi vill få in dina åsikter för att utifrån det förbättra vårt erbjudande.</em>
+        <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>Other communication about services</h2>
+        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> We process personal data in connection with other communication with you, for example to provide you with information. This can, for example, take the form of newsletters sent via email. We also process personal data that we receive from you when and if you have chosen to respond to customer surveys that we have sent to you or that you have taken part in in another way.   <br /> <br />
+        <em>Legal basis of the above according to the following: Fulfillment of the agreement according to point 1 and Legitimate interest according to point 3. Our legitimate interests for the processing of personal data in customer surveys are that we want to get your opinions in order to improve our offer based on it.</em>
         </p>
 
-        <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>Efterlevnad av lagar</h2>
-        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> Vi behandlar dina personuppgifter i syfte att kunna fullgöra de lagstadgade skyldigheter som åvilar oss, t.ex. bokföringslagens krav på lagring av bokföringsmaterial.  <br /> <br />
-        <em>Rättslig grund av ovan enligt följande: Rättslig förpliktelse enligt punkten 2.</em>
+        <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>Compliance with laws</h2>
+        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> We process your personal data in order to be able to fulfill the statutory duties that we are obliged to, for example the requirement of the Accounting Act to store accounting material.  <br /> <br />
+        <em>Legal basis of the above according to the following: Legal obligation according to point 2.</em>
         </p>
 
-        <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>5. Hur vi samlar in uppgifterna</h2>
-        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> Vi samlar in personuppgifter i samband med att du registrerar dig på hemsidan, kontakter med er ekonomiska förvaltare, telefon eller genom personligt besök hos oss.
+        <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>5. How we collect the data</h2>
+        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> We collect personal data in connection with you registering on the website, contacting your financial manager, phone or by personal visit to us.
         </p>
 
 
-        <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>6. Hur länge uppgifterna sparas</h2>
-        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> Vi sparar inte personuppgifter om dig längre än vi behöver utifrån det syfte vi behandlar dem för. Vi sparar därför aldrig personuppgifter bara för att de är ”bra att ha”, utan har alltid ett definierat syfte som har stöd i lagstiftning eller i avtal. <br /> <br />
-        Eftersom de uppgifter som vi samlar in behandlas för olika syften, sparas de också under olika lång tid. Det kan därför vara så att personuppgifter om dig finns sparade i ett system, men raderas i ett annat.
+        <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>6. How long the data is stored</h2>
+        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> We do not store personal data about you longer than we need based on the purpose we process them for. We therefore never store personal data just because they are ”good to have”, but always have a defined purpose that has support in legislation or in an agreement. <br /> <br />
+        Since the data we collect is processed for different purposes, it is also stored for different periods of time. It may therefore be the case that personal data about you is stored in one system, but deleted in another.
         </p>
 
-        <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>7. Till vem uppgifterna lämnas ut</h2>
-        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> I vissa situationer delar vi dina personuppgifter med andra. Nedan beskriver vi när och varför vi gör detta. Vi vill understryka att vi aldrig lämnar över dina personuppgifter om detta inte krävs för att vi ska kunna utföra någon av de behandlingar som anges ovan, vilka vi har ett syfte och som det finns laglig grund för. Vi säljer inte heller dina personuppgifter vidare till andra. <br /> <br />
-         <strong>Leverantörer och andra personuppgiftsbiträden som behandlar personuppgifter för vår räkning</strong>  <br /> <br />
-          Vi anlitar olika leverantörer för att vi ska kunna tillhandahålla våra tjänster. När vi använder oss av leverantörer som behandlar personuppgifter för vår räkning, reglerar vi i avtal att leverantören (personuppgiftsbiträdet) endast får behandla personuppgifter för ändamål som vi bestämmer och på särskilda instruktioner från oss. Våra leverantörer får alltså inte göra någonting med dina personuppgifter som vi inte uttryckligen talat om för dem att de ska göra. Vi ställer även krav på att leverantörens hantering av personuppgifter ska vara säker och korrekt.
+        <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>7. To whom the data is disclosed</h2>
+        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> In some situations we share your personal data with others. Below we describe when and why we do this. We want to emphasize that we never disclose your personal data unless it is required for us to be able to perform any of the processing that is mentioned above, which we have a purpose and for which there is a legal basis. We also do not sell your personal data to others. <br /> <br />
+         <strong>Suppliers and other personal data processors for our account</strong>  <br /> <br />
+          We hire different suppliers in order for us to be able to provide our services. When we use suppliers that process personal data for our account, we regulate in an agreement that the supplier (personal data processor) may only process personal data for purposes that we determine and on specific instructions from us. Our suppliers are therefore not allowed to do anything with your personal data that we have not explicitly told them to do. We also set requirements for the supplier&apos;s handling of personal data to be secure and correct.
         </p>
 
-        <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>8. Dina rättigheter</h2>
+        <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>8. Your rights</h2>
         <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> 
-        Du har rätt att få information om hur vi behandlar dina personuppgifter. Sådan information får du i denna policy. Om du har ytterligare frågor om vår behandling av personuppgifter, är du välkommen att kontakta oss. Kontaktuppgifter hittar du längst ner i policyn. <br /> <br />
+        You have the right to receive information about how we process your personal data. Such information you get in this policy. If you have any further questions about our processing of personal data, you are welcome to contact us. Contact information can be found at the bottom of the policy. <br /> <br />
 
-        Utöver rätt till information, har du även andra rättigheter i relation till dina personuppgifter. Du kan t.ex. påverka vår behandling genom att begära utdrag, rättelse, radering och begränsning. Du har även rätt att invända mot viss behandling som vi utför samt begära ut dina personuppgifter eller begära att de flyttas. <br /> <br />
+        In addition to the right to information, you also have other rights in relation to your personal data. You can, for example, influence our processing by requesting extracts, corrections, deletions and restrictions. You also have the right to object to certain processing that we perform as well as to request your personal data or request that they be moved. <br /> <br />
 
-        Din rätt att bli raderad förutsätter att uppgifterna inte längre behövs för det ändamål som de samlats in för, om behandlingen grundar sig på en intresseavvägning och det inte finns berättigade skäl som väger tyngre än ditt intresse, om personuppgifterna har behandlats olagligt, eller om du invänder mot behandling för direktmarknadsföringsändamål. Rätten att bli raderad gäller inte om vi är skyldiga enligt lag (t ex bokföringslagen) att behålla uppgifterna. <br /> <br />
+        Your right to be deleted presupposes that the data is no longer needed for the purpose for which they were collected, if the processing is based on an interest balancing and there are no legitimate reasons that weigh more than your interest, if the personal data has been processed illegally, or if you object to processing for direct marketing purposes. The right to be deleted does not apply if we are obliged by law (e.g. the Accounting Act) to keep the data. <br /> <br />
 
-        Du har rätt att kostnadsfritt en gång per år begära utdrag, du kan även begära rättelse, radering och/eller begränsning avseende de personuppgifter vi behandlar om dig. Eftersom det är viktigt att vi inte lämnar ut dina personuppgifter till någon annan, ska en sådan begäran göras skriftligen och undertecknas av dig. Specificera dessutom vad begäran avser. Skicka begäran i ett brev till oss där du anger ditt namn och personnummer, din adress och en av dig undertecknad kopia av giltig ID-handling. <br /> <br />
+        You have the right to request an extract, correction, deletion and/or restriction of the personal data we process about you. Since it is important that we do not leave your personal data to anyone else, such a request must be made in writing and signed by you. Specify what the request is about. Send the request in a letter to us where you indicate your name and personal number, your address and a copy of a valid ID document signed by you. <br /> <br />
 
-        Registerutdraget kommer att skickas till dig inom 30 dagar från det att vi tog emot begäran. Om utdraget är omfattande så att vi behöver mer tid eller om vi av någon anledning inte kan genomföra din begäran, meddelar vi dig detta. <br /> <br />
+        The extract will be sent to you within 30 days from the time we received the request. If the extract is extensive so that we need more time or if we for any reason cannot carry out your request, we will inform you of this. <br /> <br />
 
-        Vänligen skicka din begäran till oss: Märstagatan 12, 753 23 Uppsala.
+        Please send your request to us: Ahrenbergsvägen 4C, 416 73 Göteborg.
         </p>
 
-        <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>9. Säkerhet</h2>
-        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'>Vi skyddar dina personuppgifter genom en kombination av tekniska och organisatoriska lösningar. Åtkomstsystem krävs för tillgång till samtliga av våra system som hanterar personuppgifter. Anställda hos oss samt personuppgiftsbiträden och underbiträden ska följa vår interna informationssäkerhetspolicy.
+        <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>9. Security</h2>
+        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'>We protect your personal data through a combination of technical and organizational solutions. Access systems are required to access all of our systems that handle personal data. Employees at us as well as personal data processors and sub-processors must follow our internal information security policy.
         </p>
 
         <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>10. Cookies</h2>
-        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'>Vi använder så kallade cookies på hemsidan www.golvfinish.se. Syftet är att hemsidan ska fungera på bästa sätt, för att ge dig tillgång till vissa funktioner samt för att få information om besök på hemsidan. En cookie är en liten textfil som lagras på besökarens dator och som innehåller information. Det finns två typer av cookies; dels permanenta cookies som sparar en fil på besökarens dator till dess att filen tas bort, dels sessionscookies som försvinner när du stänger din webbläsare. På vår hemsida används även tredjepartscookies för bl.a. Google Analytics. <br /> <br />
+        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'>We use so-called cookies on the website www.beanify.com. The purpose is to make the website work as well as possible, to give you access to certain functions as well as to get information about visits to the website. A cookie is a small text file that is stored on the visitor&apos;s computer and contains information. There are two types of cookies; permanent cookies that save a file on the visitor&apos;s computer until the file is deleted, and session cookies that disappear when you close your browser. On our website, we also use third-party cookies for, among other things, Google Analytics. <br /> <br />
 
-        Vi använder cookies för att förbättra upplevelsen på hemsidan på följande sätt: <br /> <br />
+        We use cookies to improve the experience on the website as follows: <br /> <br />
 
-        ☑️ Kontrollerar hur hemsidan används genom att kolla på trafikmönster. <br /> <br />
-        ☑️ Samlar in och analyserar beteendedata baserat på användning av webbplats och tjänster i syfte att förbättra användarupplevelsen. 
+        ☑️ Check how the website is used by looking at traffic patterns. <br /> <br />
+        ☑️ Collect and analyze behavior data based on the use of the website and services in order to improve the user experience. 
         </p>
 
-        <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>11. Klagomål</h2>
-        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> Om du anser att vi behandlar dina personuppgifter i strid med gällande regler bör du anmäla detta till oss så snart som möjligt. Du kan även vända dig direkt till Datainspektionen och lämna in ditt klagomål.
+        <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>11. Complaints</h2>
+        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> If you believe that we process your personal data in violation of applicable rules, you should report this to us as soon as possible. You can also turn directly to Datainspektionen and submit your complaint.
         </p>
 
-        <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>12. Skadestånd</h2>
-        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> Om du har lidit skada på grund av att dina personuppgifter har behandlats i strid med gällande regler kan du ha rätt till skadestånd. I sådana fall kan du, efter en skriftlig begäran, begära skadestånd från oss eller väcka skadeståndstalan i domstol.
+        <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>12. Compensation</h2>
+        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> If you have suffered damage as a result of your personal data being processed in violation of applicable rules, you may be entitled to compensation. In such cases, you can, after a written request, request compensation from us or bring a claim for compensation in court.
         </p>
 
-        <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>13. Personuppgiftsansvarig</h2>
-        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> Företaget är personuppgiftsansvarig och ansvarar för de personuppgifter som behandlas under varumärket Företaget. Vi bestämmer ändamålen för behandlingen och hur den går till. Vi bestämmer även hur personuppgifter behandlas när vi använder oss av underleverantörer. </p>
+        <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>13. Personal data responsible</h2>
+        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> The company is the personal data responsible and is responsible for the personal data that is processed under the company&apos;s brand. We determine the purposes of the processing and how it goes. We also determine how personal data is processed when we use sub-suppliers. </p>
 
-        <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>14. Kontaktuppgifter</h2>
-        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> Företaget är personuppgiftsansvarig och ansvarar för de personuppgifter som behandlas under varumärket Företaget. Vi bestämmer ändamålen för behandlingen och hur den går till. Vi bestämmer även hur personuppgifter behandlas när vi använder oss av underleverantörer.<br /> <br />
+        <h2 className='text-black font-bold w-3/4 sm:text-lg sm:w-2/4'>14. Contact information</h2>
+        <p className='text-black w-3/4 sm:text-lg sm:w-2/4'> The company is the personal data responsible and is responsible for the personal data that is processed under the company&apos;s brand. We determine the purposes of the processing and how it goes. We also determine how personal data is processed when we use sub-suppliers.<br /> <br />
         </p>
 
         <address className='text-black w-3/4 sm:text-lg sm:w-2/4'>
-        Allbygg Trestad AB <br />
-        Lövvägen 4 <br />
-        468 30 Vargön <br />
-        073-500 27 33 <br />
-        info@allbygg.se <br />
+        Gaspar Invest AB <br />
+        Ahrenbergsvägen 4C <br />
+        416 73 Göteborg <br />
+        +46 73 350 91 97 <br />
+        dejan.gaspar@gmail.com <br />
       </address> 
       
         </div>
