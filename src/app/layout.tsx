@@ -52,6 +52,10 @@ export default function RootLayout({
           type="text/javascript" 
           defer
         />
+        <Script 
+          src="https://js.stripe.com/v3/"
+          strategy="beforeInteractive"
+        />
         <Banner />
         <Header />
         {children}

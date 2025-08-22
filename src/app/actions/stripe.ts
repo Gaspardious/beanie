@@ -14,10 +14,7 @@ interface Product {
 }
 
 export async function fetchClientSecret(products: Product[]) {
-  console.log('Stripe action called with products:', products)
-  
   const origin = (await headers()).get('origin')
-  console.log('Origin:', origin)
 
   // Transform products to Stripe line items format
   const lineItems = products.map(product => ({
@@ -37,7 +34,7 @@ export async function fetchClientSecret(products: Product[]) {
     quantity: product.quantity,
   }))
   
-  console.log('Line items created:', lineItems)
+
 
   // Create Checkout Sessions from body params.
   const session = await stripe.checkout.sessions.create({
@@ -62,6 +59,5 @@ export async function fetchClientSecret(products: Product[]) {
     customer_creation: 'always',
   })
 
-  console.log('Stripe session created:', session.id)
   return session.client_secret!
 }

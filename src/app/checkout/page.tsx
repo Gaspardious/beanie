@@ -8,7 +8,7 @@ import Checkout from '../components/checkout';
 
 const CheckoutPage = () => {
   const router = useRouter();
-  const { checkoutProducts, setCheckoutProducts } = useProduct();
+  const { checkoutProducts, setCheckoutProducts, updateCheckoutQuantity } = useProduct();
   const [showOrderSummary, setShowOrderSummary] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
 
@@ -41,17 +41,8 @@ const CheckoutPage = () => {
     const product = checkoutProducts.find(p => p.cartItemId === cartItemId);
     if (!product) return;
     
-    if (product.quantity + change < 1) {
-      const newProducts = checkoutProducts.filter(p => p.cartItemId !== cartItemId);
-      setCheckoutProducts(newProducts);
-    } else {
-      const newProducts = checkoutProducts.map(p => 
-        p.cartItemId === cartItemId 
-          ? { ...p, quantity: p.quantity + change }
-          : p
-      );
-      setCheckoutProducts(newProducts);
-    }
+    // Use the context function to keep cart and checkout in sync
+    updateCheckoutQuantity(cartItemId, change);
   };
 
   return (

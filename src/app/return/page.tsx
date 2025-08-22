@@ -2,28 +2,10 @@ import { redirect } from 'next/navigation'
 import Link from 'next/link'
 
 import { stripe } from '../../lib/stripe'
+import CartClearer from '../components/CartClearer'
 
 interface ReturnPageProps {
   searchParams: Promise<{ session_id?: string }>;
-}
-
-// Client component to clear cart
-'use client'
-import { useEffect } from 'react'
-import { useProduct } from '../context/ProductContext'
-
-function CartClearer({ status }: { status: string }) {
-  const { clearCart } = useProduct()
-
-  useEffect(() => {
-    if (status === 'complete') {
-      // Clear cart after successful payment
-      clearCart()
-      console.log('Cart cleared after successful payment')
-    }
-  }, [status, clearCart])
-
-  return null
 }
 
 export default async function Return({ searchParams }: ReturnPageProps) {
@@ -73,12 +55,17 @@ export default async function Return({ searchParams }: ReturnPageProps) {
             </a>
           </p>
           
-          <Link 
-            href="/"
-            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-          >
-            Continue Shopping
-          </Link>
+          <div className="space-y-3">
+            <Link 
+              href="/"
+              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            >
+              Continue Shopping
+            </Link>
+            <div className="text-xs text-gray-500">
+              Your cart has been automatically cleared after this successful purchase.
+            </div>
+          </div>
         </div>
       </div>
     )

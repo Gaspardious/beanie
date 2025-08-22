@@ -30,24 +30,21 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Invalid signature' }, { status: 400 })
   }
 
-  console.log('Webhook event received:', event.type, event.id)
+
 
   // Handle the event
   try {
     switch (event.type) {
       case 'checkout.session.completed':
         const session = event.data.object as Stripe.Checkout.Session
-        console.log('Processing checkout.session.completed for session:', session.id)
         await handleSuccessfulPayment(session)
         break
       case 'payment_intent.succeeded':
-        console.log('Payment intent succeeded:', event.data.object.id)
         break
       case 'payment_intent.payment_failed':
-        console.log('Payment intent failed:', event.data.object.id)
         break
       default:
-        console.log(`Unhandled event type ${event.type}`)
+        break
     }
   } catch (error) {
     console.error('Error processing webhook event:', error)
@@ -59,14 +56,9 @@ export async function POST(req: Request) {
 
 async function handleSuccessfulPayment(session: Stripe.Checkout.Session) {
   try {
-    console.log('Processing successful payment:', session.id)
-    console.log('Session metadata:', session.metadata)
-    console.log('Customer details:', session.customer_details)
     
     // Create order in Printful
     const printfulOrder = await createPrintfulOrder(session)
-    
-    console.log('Printful order created:', printfulOrder)
     
     // Here you could also save order to your database
     // await saveOrderToDatabase(session, printfulOrder)
@@ -88,19 +80,13 @@ async function createPrintfulOrder(session: Stripe.Checkout.Session) {
     throw new Error('No line items found in session')
   }
   
-  console.log('Line items data:', line_items.data)
-  
   // Transform line items to Printful format
   const items = line_items.data.map((item: Stripe.LineItem) => {
-    console.log('Processing line item:', item)
-    
     // Get metadata from the price's product
     let metadata = {}
     if (item.price?.product && typeof item.price.product === 'object' && 'metadata' in item.price.product) {
       metadata = (item.price.product as any).metadata
     }
-    
-    console.log('Item metadata:', metadata)
     
     return {
       sync_product_id: metadata.printful_product_id || metadata.external_id || 'default',
@@ -136,10 +122,9 @@ async function createPrintfulOrder(session: Stripe.Checkout.Session) {
     external_id: session.id // Use Stripe session ID as external reference
   }
 
-  console.log('Creating Printful order with data:', orderData)
+
 
   if (!process.env.PRINTFUL_API_KEY) {
-    console.error('PRINTFUL_API_KEY not configured')
     throw new Error('Printful API key not configured')
   }
 
@@ -154,7 +139,6 @@ async function createPrintfulOrder(session: Stripe.Checkout.Session) {
 
   if (!response.ok) {
     const error = await response.text()
-    console.error('Printful API error response:', error)
     throw new Error(`Printful API error: ${response.status} - ${error}`)
   }
 
