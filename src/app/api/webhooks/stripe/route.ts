@@ -51,7 +51,13 @@ export async function POST(req: Request) {
         const session = event.data.object as Stripe.Checkout.Session
         console.log('📋 Session ID:', session.id)
         console.log('💳 Amount:', session.amount_total)
-        await handleSuccessfulPayment(session)
+        
+        // Retrieve the full session with expanded line items
+        const fullSession = await stripe.checkout.sessions.retrieve(session.id, {
+          expand: ['line_items']
+        })
+        
+        await handleSuccessfulPayment(fullSession)
         console.log('✅ Checkout session processed successfully')
         break
       case 'payment_intent.succeeded':
