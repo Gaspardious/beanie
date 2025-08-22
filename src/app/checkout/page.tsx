@@ -8,7 +8,7 @@ import Checkout from '../components/checkout';
 
 const CheckoutPage = () => {
   const router = useRouter();
-  const { checkoutProducts, setCheckoutProducts, updateCheckoutQuantity } = useProduct();
+  const { checkoutProducts, updateCheckoutQuantity } = useProduct();
   const [showOrderSummary, setShowOrderSummary] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
 

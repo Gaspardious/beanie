@@ -106,9 +106,9 @@ async function createPrintfulOrder(session: Stripe.Checkout.Session) {
   // Transform line items to Printful format
   const items = line_items.data.map((item: Stripe.LineItem) => {
     // Get metadata from the price's product
-    let metadata = {}
+    let metadata: Record<string, string> = {}
     if (item.price?.product && typeof item.price.product === 'object' && 'metadata' in item.price.product) {
-      metadata = (item.price.product as any).metadata
+      metadata = (item.price.product as Stripe.Product).metadata
     }
     
     console.log('📋 Item metadata:', metadata)
