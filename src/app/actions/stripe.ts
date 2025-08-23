@@ -59,9 +59,7 @@ export async function fetchClientSecret(products: Product[]) {
             printful_product_id: 'shipping',
             printful_variant_id: 'shipping',
             external_id: 'shipping',
-            sync_variant_id: 'shipping',
-            base_shipping: shippingCost.toString(),
-            additional_items: additionalItemsShipping.toString()
+            sync_variant_id: 'shipping'
           }
         },
         unit_amount: totalShippingCost * 100, // Convert to cents
