@@ -15,6 +15,7 @@ type Product = {
   cartItemId: string;
   quantity: number;
   price: number;
+  description?: string;
 };
 
 // Define type for API product data that might be missing some fields
@@ -165,7 +166,7 @@ const ProductPage = () => {
             </div>
             
             <div className="mb-6">
-              <p className="text-gray-700">{DEFAULT_PRODUCT_DETAILS.description}</p>
+              <p className="text-gray-700">{singleProduct.description || DEFAULT_PRODUCT_DETAILS.description}</p>
             </div>
             
             <div className="mb-6">

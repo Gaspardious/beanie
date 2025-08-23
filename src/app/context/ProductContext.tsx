@@ -9,6 +9,7 @@ type Product = {
   cartItemId: string;
   quantity: number;
   price: number;
+  description?: string;
 };
 
 type ProductContextType = {
