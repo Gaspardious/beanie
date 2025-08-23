@@ -137,6 +137,12 @@ async function createPrintfulOrder(session: Stripe.Checkout.Session) {
         console.log('⚠️ Using fallback variant ID:', variantId)
       }
       
+      // Special handling for canvas product
+      if (metadata.printful_product_id === '390606094') {
+        console.log('🎨 Canvas product detected, using canvas variant ID')
+        variantId = '4938455141' // Canvas variant ID
+      }
+      
       const printfulItem = {
         sync_variant_id: parseInt(variantId) || 4615175066, // Use correct variant ID as fallback
         quantity: item.quantity || 1,
