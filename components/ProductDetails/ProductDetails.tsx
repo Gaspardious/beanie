@@ -11,8 +11,16 @@ export const DEFAULT_PRODUCT_DETAILS = {
     price: 279,
   };
 
+// Define the product details type
+type ProductDetails = {
+  name: string;
+  description: string;
+  features: string[];
+  price: number;
+};
+
 // Custom product details for specific products
-export const CUSTOM_PRODUCT_DETAILS: Record<string, any> = {
+export const CUSTOM_PRODUCT_DETAILS: Record<string, ProductDetails> = {
   'Salt and Storms': {
     name: "Salt and Storms Canvas Print",
     description: "A stunning canvas print featuring a rugged fisherman in his natural element. This high-quality canvas artwork captures the raw beauty of maritime life, perfect for adding character and atmosphere to any room. Printed on acid-free, fade-resistant canvas with mounting brackets included.",
