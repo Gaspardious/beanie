@@ -53,8 +53,7 @@ export async function fetchClientSecret(products: Product[]) {
       price_data: {
         currency: 'sek',
         product_data: {
-          name: 'Shipping',
-          description: `Shipping to Sweden${totalQuantity > 1 ? ` (${totalQuantity} items)` : ''}`,
+          name: `Shipping to Sweden${totalQuantity > 1 ? ` (${totalQuantity} items)` : ''}`,
           metadata: {
             printful_product_id: 'shipping',
             printful_variant_id: 'shipping',
