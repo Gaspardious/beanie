@@ -21,7 +21,7 @@ export async function GET() {
         'printful_product_id'  // This should be present
       ]
     });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Debug failed' }, { status: 500 });
   }
 }
