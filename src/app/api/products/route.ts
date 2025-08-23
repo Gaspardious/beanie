@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
-// Cache duration in seconds (1 hour)
-const CACHE_DURATION = 3600;
+// Cache duration in seconds (5 minutes for faster updates)
+const CACHE_DURATION = 300;
 
 // Fallback prices for specific products
 const FALLBACK_PRICES: Record<string, number> = {
@@ -27,9 +27,10 @@ export async function GET() {
       headers: {
         Authorization: `Bearer ${process.env.PRINTFUL_API_KEY}`,
       },
-      // Add cache configuration
+      // Use stale-while-revalidate for better performance and freshness
       next: {
-        revalidate: CACHE_DURATION
+        revalidate: CACHE_DURATION,
+        tags: ['products'] // Add cache tag for manual invalidation
       }
     });
 
@@ -73,12 +74,13 @@ export async function GET() {
     
     console.log('Transformed data:', transformedData);
     
-    // Return response with cache headers
+    // Return response with optimized cache headers
     return new NextResponse(JSON.stringify(transformedData), {
       status: 200,
       headers: {
         'Content-Type': 'application/json',
-        'Cache-Control': `s-maxage=${CACHE_DURATION}, stale-while-revalidate`
+        'Cache-Control': `s-maxage=${CACHE_DURATION}, stale-while-revalidate=${CACHE_DURATION * 2}`,
+        'Vary': 'Accept-Encoding'
       }
     });
   } catch (error) {
