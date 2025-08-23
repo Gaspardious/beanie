@@ -118,7 +118,7 @@ async function createPrintfulOrder(session: Stripe.Checkout.Session) {
       // Filter out shipping line items
       if (item.price?.product && typeof item.price.product === 'object' && 'metadata' in item.price.product) {
         const metadata = (item.price.product as Stripe.Product).metadata
-        return metadata.type !== 'shipping'
+        return metadata.printful_product_id !== 'shipping'
       }
       return true // Include all other items
     })

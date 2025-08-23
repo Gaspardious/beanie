@@ -56,7 +56,10 @@ export async function fetchClientSecret(products: Product[]) {
           name: 'Shipping',
           description: `Shipping to Sweden${totalQuantity > 1 ? ` (${totalQuantity} items)` : ''}`,
           metadata: {
-            type: 'shipping',
+            printful_product_id: 'shipping',
+            printful_variant_id: 'shipping',
+            external_id: 'shipping',
+            sync_variant_id: 'shipping',
             base_shipping: shippingCost.toString(),
             additional_items: additionalItemsShipping.toString()
           }
