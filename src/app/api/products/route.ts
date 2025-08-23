@@ -6,6 +6,7 @@ const CACHE_DURATION = 300;
 // Fallback prices for specific products
 const FALLBACK_PRICES: Record<string, number> = {
   'The Sailor Beanie': 249,
+  'Salt and Storms': 349,
   'Mouse pad': 149,
   'The Sailor Mug': 139,
 };
@@ -59,7 +60,8 @@ export async function GET() {
         366062229: '4609721506',
         366026939: '4608984062',
         366025292: '4608936708',
-        366022204: '4608848763'
+        366022204: '4608848763',
+        390606094: '4615175066' // Salt and Storms - need to get correct variant ID
       };
       
       const printfulVariantId = variantIdMap[product.id] || '4615175066';
