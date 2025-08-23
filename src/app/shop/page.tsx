@@ -5,13 +5,13 @@ import { useProduct } from "../context/ProductContext";
 import Image from "next/image";
 
 const Shop = () => {
-  const [products, setProducts] = useState<{ id: number; name: string; thumbnail_url: string; external_id: string, description: string, price: number}[]>([]);
+  const [products, setProducts] = useState<{ id: number; name: string; thumbnail_url: string; external_id: string, description: string, price: number, printful_variant_id?: string, printful_product_id?: string}[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
   const { setSingleProduct } = useProduct();
 
-  const handleProductClick = (product: { id: number; name: string; thumbnail_url: string; external_id: string; description: string; price: number }) => {
+  const handleProductClick = (product: { id: number; name: string; thumbnail_url: string; external_id: string; description: string; price: number; printful_variant_id?: string; printful_product_id?: string }) => {
     setSingleProduct({
       ...product,
       cartItemId: crypto.randomUUID(), 
@@ -29,7 +29,7 @@ const Shop = () => {
 
         const data = await response.json();
         console.log("Fetched Products:", data);
-        setProducts(data.map((product: { id: number; name: string; thumbnail_url: string; external_id?: string, description: string, price: number }) => ({
+        setProducts(data.map((product: { id: number; name: string; thumbnail_url: string; external_id?: string, description: string, price: number, printful_variant_id?: string, printful_product_id?: string }) => ({
           ...product,
           external_id: product.external_id || ""
         })));

@@ -122,15 +122,19 @@ async function createPrintfulOrder(session: Stripe.Checkout.Session) {
       }
       
       console.log('📋 Item metadata:', metadata)
+      console.log('📋 Item name:', item.price?.product && typeof item.price.product === 'object' ? (item.price.product as Stripe.Product).name : 'Unknown')
+      console.log('📋 Item amount:', item.amount_total)
       
       // Use sync_variant_id if available, otherwise use variant_id
-      // For now, use the correct variant ID from our Printful account
       let variantId = metadata.printful_variant_id || metadata.sync_variant_id || '1'
+      
+      console.log('🔍 Found variant ID:', variantId)
       
       // If the variant ID is '1' (default), use the correct one from our products
       if (variantId === '1' || !variantId) {
         // Use the first variant ID from our Printful products
         variantId = '4615175066' // This is the correct variant ID from our test
+        console.log('⚠️ Using fallback variant ID:', variantId)
       }
       
       const printfulItem = {

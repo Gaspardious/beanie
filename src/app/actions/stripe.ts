@@ -19,24 +19,35 @@ export async function fetchClientSecret(products: Product[]) {
   const origin = (await headers()).get('origin')
 
   // Transform products to Stripe line items format
-  const lineItems = products.map(product => ({
-    price_data: {
-      currency: 'sek',
-      product_data: {
-        name: product.name,
-        images: [product.thumbnail_url],
-        metadata: {
-          printful_product_id: product.printful_product_id || product.external_id || product.id.toString(),
-          printful_variant_id: product.printful_variant_id || '1',
-          external_id: product.external_id || product.id.toString(),
-          // Add sync_variant_id for Printful API
-          sync_variant_id: product.printful_variant_id || '1'
-        }
+  const lineItems = products.map(product => {
+    console.log('🛒 Processing product for Stripe:', {
+      name: product.name,
+      id: product.id,
+      price: product.price,
+      quantity: product.quantity,
+      printful_variant_id: product.printful_variant_id,
+      printful_product_id: product.printful_product_id
+    });
+    
+    return {
+      price_data: {
+        currency: 'sek',
+        product_data: {
+          name: product.name,
+          images: [product.thumbnail_url],
+          metadata: {
+            printful_product_id: product.printful_product_id || product.external_id || product.id.toString(),
+            printful_variant_id: product.printful_variant_id || '1',
+            external_id: product.external_id || product.id.toString(),
+            // Add sync_variant_id for Printful API
+            sync_variant_id: product.printful_variant_id || '1'
+          }
+        },
+        unit_amount: product.price * 100, // Convert to cents
       },
-      unit_amount: product.price * 100, // Convert to cents
-    },
-    quantity: product.quantity,
-  }))
+      quantity: product.quantity,
+    };
+  });
 
   // Create Checkout Sessions from body params.
   const session = await stripe.checkout.sessions.create({
