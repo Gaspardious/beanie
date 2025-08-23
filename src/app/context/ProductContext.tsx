@@ -10,6 +10,8 @@ type Product = {
   quantity: number;
   price: number;
   description?: string;
+  printful_variant_id?: string;
+  printful_product_id?: string;
 };
 
 type ProductContextType = {
