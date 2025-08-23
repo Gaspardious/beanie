@@ -11,6 +11,11 @@ const FALLBACK_PRICES: Record<string, number> = {
   'The Sailor Mug': 139,
 };
 
+// Custom descriptions for specific products
+const CUSTOM_DESCRIPTIONS: Record<string, string> = {
+  'Salt and Storms': 'A stunning canvas print featuring a rugged fisherman in his natural element. This high-quality canvas artwork captures the raw beauty of maritime life, perfect for adding character and atmosphere to any room. Printed on acid-free, fade-resistant canvas with mounting brackets included.',
+};
+
 interface PrintfulProduct {
   id: number;
   name: string;
@@ -53,6 +58,9 @@ export async function GET() {
       // Use fallback price based on product name
       const price = FALLBACK_PRICES[product.name] || 0;
       
+      // Use custom description if available, otherwise use Printful description
+      const description = CUSTOM_DESCRIPTIONS[product.name] || product.description || '';
+      
       // Map product IDs to their correct variant IDs
       const variantIdMap: Record<number, string> = {
         366639172: '4615175066',
@@ -69,6 +77,7 @@ export async function GET() {
       return {
         ...product,
         price,
+        description,
         printful_variant_id: printfulVariantId,
         printful_product_id: product.id.toString()
       };
