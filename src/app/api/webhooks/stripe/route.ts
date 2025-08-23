@@ -143,10 +143,26 @@ async function createPrintfulOrder(session: Stripe.Checkout.Session) {
         variantId = '4938455141' // Canvas variant ID
       }
       
+      // Get the correct retail price from our API based on product ID
+      let retailPrice = '0.00';
+      if (metadata.printful_product_id) {
+        // Map product IDs to their correct retail prices
+        const priceMap: Record<string, string> = {
+          '390606094': '349.00', // Salt and Storms canvas
+          '366639172': '249.00', // The Sailor Beanie
+          '366639101': '249.00', // The Sailor Beanie
+          '366062229': '249.00', // The Sailor Beanie
+          '366026939': '249.00', // The Sailor Beanie
+          '366025292': '249.00', // The Sailor Beanie
+          '366022204': '249.00', // The Sailor Beanie
+        };
+        retailPrice = priceMap[metadata.printful_product_id] || '0.00';
+      }
+      
       const printfulItem = {
         sync_variant_id: parseInt(variantId) || 4615175066, // Use correct variant ID as fallback
         quantity: item.quantity || 1,
-        retail_price: ((item.amount_total || 0) / 100).toFixed(2), // Convert from cents
+        retail_price: retailPrice, // Use correct retail price from our API
         // Add printful_product_id if available
         ...(metadata.printful_product_id && { 
           sync_product_id: parseInt(metadata.printful_product_id) 
