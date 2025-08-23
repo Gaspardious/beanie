@@ -112,16 +112,8 @@ async function createPrintfulOrder(session: Stripe.Checkout.Session) {
   
   console.log('🛍️ Line items found:', line_items.data.length)
   
-  // Transform line items to Printful format (excluding shipping)
+  // Transform line items to Printful format
   const items = line_items.data
-    .filter((item: Stripe.LineItem) => {
-      // Filter out shipping line items
-      if (item.price?.product && typeof item.price.product === 'object' && 'metadata' in item.price.product) {
-        const metadata = (item.price.product as Stripe.Product).metadata
-        return metadata.printful_product_id !== 'shipping'
-      }
-      return true // Include all other items
-    })
     .map((item: Stripe.LineItem) => {
       // Get metadata from the price's product
       let metadata: Record<string, string> = {}
