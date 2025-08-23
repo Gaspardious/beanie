@@ -3,7 +3,7 @@ import { useProduct } from "../../../app/context/ProductContext";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
-import { DEFAULT_PRODUCT_DETAILS } from "../../../../components/ProductDetails/ProductDetails";
+import { DEFAULT_PRODUCT_DETAILS, CUSTOM_PRODUCT_DETAILS } from "../../../../components/ProductDetails/ProductDetails";
 import Link from "next/link";
 
 // Define Product type to match the one in ProductContext
@@ -172,7 +172,7 @@ const ProductPage = () => {
             <div className="mb-6">
               <h2 className="text-sm uppercase text-gray-500 mb-2">Features</h2>
               <ul className="list-disc pl-5 text-gray-700">
-                {DEFAULT_PRODUCT_DETAILS.features.map((feature, index) => (
+                {(CUSTOM_PRODUCT_DETAILS[singleProduct.name]?.features || DEFAULT_PRODUCT_DETAILS.features).map((feature, index) => (
                   <li key={index} className="mb-1">{feature}</li>
                 ))}
               </ul>
