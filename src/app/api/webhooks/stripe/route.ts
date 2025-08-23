@@ -181,6 +181,9 @@ async function createPrintfulOrder(session: Stripe.Checkout.Session) {
     throw new Error('Printful API key not configured')
   }
 
+  console.log('⏱️ Starting Printful API call...')
+  const startTime = Date.now()
+  
   const response = await fetch('https://api.printful.com/orders', {
     method: 'POST',
     headers: {
@@ -188,9 +191,12 @@ async function createPrintfulOrder(session: Stripe.Checkout.Session) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(orderData),
-    // Add timeout to prevent hanging
-    signal: AbortSignal.timeout(10000) // 10 second timeout
+    // Increase timeout to 30 seconds to handle potential delays
+    signal: AbortSignal.timeout(30000) // 30 second timeout
   })
+  
+  const endTime = Date.now()
+  console.log(`⏱️ Printful API call took ${endTime - startTime}ms`)
 
   console.log('📡 Printful response status:', response.status)
 
@@ -203,6 +209,9 @@ async function createPrintfulOrder(session: Stripe.Checkout.Session) {
   }
 
   const result = await response.json()
-  console.log('✅ Printful order created:', result.id)
+  console.log('✅ Printful order created successfully!')
+  console.log('📋 Printful order ID:', result.id)
+  console.log('📋 Printful order status:', result.status)
+  console.log('📋 Printful order external_id:', result.external_id)
   return result
 }
