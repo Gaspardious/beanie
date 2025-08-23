@@ -21,8 +21,8 @@ const CheckoutPage = () => {
   const calculateShipping = () => {
     const subtotal = checkoutProducts.reduce((total, product) => total + (product.quantity * product.price), 0);
     
-    // Free shipping for orders over 399 SEK
-    if (subtotal >= 399) {
+    // Free shipping for orders over 999 SEK
+    if (subtotal >= 999) {
       return 0;
     }
 
@@ -112,7 +112,7 @@ const CheckoutPage = () => {
               </div>
               <div className="flex justify-between mb-2">
                 <span className="text-sm">Shipping</span>
-                {calculateTotal() >= 399 ? (
+                {calculateTotal() >= 999 ? (
                   <span className="text-sm text-green-600 font-medium">FREE SHIPPING</span>
                 ) : (
                   <span className="text-sm">{calculateShipping()} SEK</span>
@@ -209,7 +209,7 @@ const CheckoutPage = () => {
               </div>
               <div className="flex justify-between mb-2">
                 <span className="text-sm">Shipping</span>
-                {calculateTotal() >= 399 ? (
+                {calculateTotal() >= 999 ? (
                   <span className="text-sm text-green-600 font-medium">FREE SHIPPING</span>
                 ) : (
                   <span className="text-sm">{calculateShipping()} SEK</span>
@@ -222,7 +222,7 @@ const CheckoutPage = () => {
               <div className="mt-2 text-xs text-gray-500">
                 Base shipping: 41 SEK for first item<br />
                 Additional items: +13 SEK each<br />
-                Free shipping on orders over 399 SEK
+                Free shipping on orders over 999 SEK
               </div>
             </div>
 

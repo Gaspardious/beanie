@@ -112,39 +112,48 @@ async function createPrintfulOrder(session: Stripe.Checkout.Session) {
   
   console.log('🛍️ Line items found:', line_items.data.length)
   
-  // Transform line items to Printful format
-  const items = line_items.data.map((item: Stripe.LineItem) => {
-    // Get metadata from the price's product
-    let metadata: Record<string, string> = {}
-    if (item.price?.product && typeof item.price.product === 'object' && 'metadata' in item.price.product) {
-      metadata = (item.price.product as Stripe.Product).metadata
-    }
-    
-    console.log('📋 Item metadata:', metadata)
-    
-    // Use sync_variant_id if available, otherwise use variant_id
-    // For now, use the correct variant ID from our Printful account
-    let variantId = metadata.printful_variant_id || metadata.sync_variant_id || '1'
-    
-    // If the variant ID is '1' (default), use the correct one from our products
-    if (variantId === '1' || !variantId) {
-      // Use the first variant ID from our Printful products
-      variantId = '4615175066' // This is the correct variant ID from our test
-    }
-    
-    const printfulItem = {
-      sync_variant_id: parseInt(variantId) || 4615175066, // Use correct variant ID as fallback
-      quantity: item.quantity || 1,
-      retail_price: ((item.amount_total || 0) / 100).toFixed(2), // Convert from cents
-      // Add printful_product_id if available
-      ...(metadata.printful_product_id && { 
-        sync_product_id: parseInt(metadata.printful_product_id) 
-      })
-    }
-    
-    console.log('🎯 Printful item:', printfulItem)
-    return printfulItem
-  })
+  // Transform line items to Printful format (excluding shipping)
+  const items = line_items.data
+    .filter((item: Stripe.LineItem) => {
+      // Filter out shipping line items
+      if (item.price?.product && typeof item.price.product === 'object' && 'metadata' in item.price.product) {
+        const metadata = (item.price.product as Stripe.Product).metadata
+        return metadata.type !== 'shipping'
+      }
+      return true // Include all other items
+    })
+    .map((item: Stripe.LineItem) => {
+      // Get metadata from the price's product
+      let metadata: Record<string, string> = {}
+      if (item.price?.product && typeof item.price.product === 'object' && 'metadata' in item.price.product) {
+        metadata = (item.price.product as Stripe.Product).metadata
+      }
+      
+      console.log('📋 Item metadata:', metadata)
+      
+      // Use sync_variant_id if available, otherwise use variant_id
+      // For now, use the correct variant ID from our Printful account
+      let variantId = metadata.printful_variant_id || metadata.sync_variant_id || '1'
+      
+      // If the variant ID is '1' (default), use the correct one from our products
+      if (variantId === '1' || !variantId) {
+        // Use the first variant ID from our Printful products
+        variantId = '4615175066' // This is the correct variant ID from our test
+      }
+      
+      const printfulItem = {
+        sync_variant_id: parseInt(variantId) || 4615175066, // Use correct variant ID as fallback
+        quantity: item.quantity || 1,
+        retail_price: ((item.amount_total || 0) / 100).toFixed(2), // Convert from cents
+        // Add printful_product_id if available
+        ...(metadata.printful_product_id && { 
+          sync_product_id: parseInt(metadata.printful_product_id) 
+        })
+      }
+      
+      console.log('🎯 Printful item:', printfulItem)
+      return printfulItem
+    })
 
   if (!customer_details) {
     throw new Error('No customer details found in session')

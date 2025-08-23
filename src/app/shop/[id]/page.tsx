@@ -239,7 +239,7 @@ const ProductPage = () => {
                 </li>
                 <li className="flex items-center">
                   <span className="text-green-500 mr-2">●</span>
-                  Free shipping over 399 kr
+                  Free shipping over 999 kr
                 </li>
                 <li className="flex items-center">
                   <span className="text-green-500 mr-2">●</span>

@@ -18,6 +18,15 @@ interface Product {
 export async function fetchClientSecret(products: Product[]) {
   const origin = (await headers()).get('origin')
 
+  // Calculate shipping costs
+  const subtotal = products.reduce((sum, product) => sum + (product.price * product.quantity), 0)
+  const shippingCost = subtotal >= 999 ? 0 : 41 // Free shipping over 999 SEK, otherwise 41 SEK
+  const totalQuantity = products.reduce((sum, product) => sum + product.quantity, 0)
+  
+  // Add shipping cost for additional items (13 SEK each after first item)
+  const additionalItemsShipping = totalQuantity > 1 ? (totalQuantity - 1) * 13 : 0
+  const totalShippingCost = shippingCost + additionalItemsShipping
+
   // Transform products to Stripe line items format
   const lineItems = products.map(product => ({
     price_data: {
@@ -37,6 +46,26 @@ export async function fetchClientSecret(products: Product[]) {
     },
     quantity: product.quantity,
   }))
+
+  // Add shipping as a separate line item if there's a shipping cost
+  if (totalShippingCost > 0) {
+    lineItems.push({
+      price_data: {
+        currency: 'sek',
+        product_data: {
+          name: 'Shipping',
+          description: `Shipping to Sweden${totalQuantity > 1 ? ` (${totalQuantity} items)` : ''}`,
+          metadata: {
+            type: 'shipping',
+            base_shipping: shippingCost.toString(),
+            additional_items: additionalItemsShipping.toString()
+          }
+        },
+        unit_amount: totalShippingCost * 100, // Convert to cents
+      },
+      quantity: 1,
+    })
+  }
 
   // Create Checkout Sessions from body params.
   const session = await stripe.checkout.sessions.create({

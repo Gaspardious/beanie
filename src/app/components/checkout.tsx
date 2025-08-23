@@ -19,6 +19,12 @@ export default function Checkout() {
   const { checkoutProducts } = useProduct()
   const [stripe, setStripe] = useState<Stripe | null>(null)
   const [loading, setLoading] = useState(true)
+  const [cartKey, setCartKey] = useState(0) // Force re-render when cart changes
+
+  // Update cart key when checkout products change to force Stripe refresh
+  useEffect(() => {
+    setCartKey(prev => prev + 1)
+  }, [checkoutProducts])
 
   // Clear cart when component unmounts (after successful payment)
   useEffect(() => {
@@ -85,6 +91,7 @@ export default function Checkout() {
         <p className="text-sm text-gray-600">Loading secure payment form...</p>
       </div>
       <EmbeddedCheckoutProvider
+        key={cartKey} // Force re-render when cart changes
         stripe={stripe}
         options={{ fetchClientSecret: fetchClientSecretWithProducts }}
       >
