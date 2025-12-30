@@ -28,8 +28,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Beanies baby!",
-  description: "Beanies!",
+  title: "it's gaspar 🧔🏻‍♂️",
+  description: "it's gaspar 🧔🏻‍♂️",
   icons: "./position.svg",
 };
 

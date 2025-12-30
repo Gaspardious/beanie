@@ -3,6 +3,7 @@ import Link from "next/link";
 import Reviews from "../../components/Reviews/Reviews";
 import Image from 'next/image'
 import Head from 'next/head';
+import Youtube from "../../components/YouTube/Youtube";
 
 export default function Home() {
   return (
@@ -14,17 +15,17 @@ export default function Home() {
       <div className="relative h-[700px] w-full bg-cover">
 
         <Image 
-          src="/beanie.webp" 
+          src="/sarek.webp" 
           alt="Hero Beanie" 
           width={1000} 
           height={700} 
           priority 
-          className="object-cover w-full h-full"
+          className="object-cover w-full h-full object-center"
         />
 
-        <div className="absolute inset-0 bg-black opacity-60"></div>
+        <div className="absolute inset-0 bg-black opacity-40"></div>
 
-        <div className="absolute inset-0 bottom-0 flex flex-col items-start justify-end  px-10 pb-10">
+        <div className="absolute inset-0 bottom-0 flex flex-col items-start justify-end  px-5 pb-5 lg:px-10 lg:pb-10">
           <h1 className="text-2xl sm:text-3xl font-light text-white uppercase">The Sailor Beanie</h1>
           <h2 className="text-5xl sm:text-6xl font-bold text-white mt-2 mb-5">A Must-Have Piece for Every Man!</h2>
           <Link href="/shop">
@@ -34,6 +35,7 @@ export default function Home() {
           </Link>
         </div>
       </div>
+      <Youtube />
 
       <Info BigText="The Classic Beanie" SmallText="The classic beanie is a timeless and classic accessory that never goes out of style." positionImage="object-cover" paddingImage="p-1" ImageSrc="/images/beanie_black.jpg" BtnText="Beanies →"/>
       <Info BigText="The Golden Beanie" SmallText="Bold and chic, the golden beanie is the perfect accessory for any occasion." positionImage="object-contain" BtnText="Beanies →" ImageSrc="/images/beanie_gold.png" paddingImage="p-10" reverse/>
