@@ -1,4 +1,5 @@
 
+import Link from 'next/link'
 import React from 'react'
 
 const Youtube = () => {
@@ -49,8 +50,10 @@ const Youtube = () => {
             </div>
 
 
-            <p>Visit my <span className='text-orange-400 font-bold'>
-                YouTube-Channel!</span></p>
+            <p>Visit my
+              <Link href="https://www.youtube.com/@gaspardious" target="_blank" rel="noopener noreferrer" className='text-orange-500 font-bold'> YouTube Channel
+
+  </Link>!</p>
 
 
     
