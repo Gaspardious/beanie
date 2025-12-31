@@ -10,7 +10,7 @@ const Youtube = () => {
     <div className="flex flex-col items-center justify-center w-full py-10 bg-[linear-gradient(90deg,#282828_0%,#0f0b0b_100%)] ">
         <h2 className="text-7xl font-oswald mt-10 mb-5 bg-gradient-to-r from-orange-300 via-orange-500 to-orange-700 
            bg-clip-text text-transparent inline-block text-center">Adventures, Unfiltered</h2>
-           <p className="text-2xl font-nunito text-center mb-5">Multi-day hikes, fishing trips and remote places — filmed as they actually are.</p>
+           <p className="text-2xl font-nunito text-center mb-5 px-1">Multi-day hikes, fishing trips and remote places — filmed as they actually are.</p>
 
         <div className="flex flex-col items-center justify-center">
 
