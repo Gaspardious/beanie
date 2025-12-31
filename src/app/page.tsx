@@ -27,7 +27,7 @@ export default function Home() {
 
         <div className="absolute inset-0 bottom-0 flex flex-col items-start justify-end  px-5 pb-5 lg:px-10 lg:pb-10">
           <h1 className="text-2xl sm:text-3xl font-light text-white uppercase">The Sailor Beanie</h1>
-          <h2 className="text-5xl sm:text-6xl font-bold text-white mt-2 mb-5">A Must-Have Piece for Every Man!</h2>
+          <h2 className="text-5xl sm:text-6xl font-bold text-white mt-2 mb-5">For early casts, long hikes and cold winds.</h2>
           <Link href="/shop">
             <button className="bg-orange-500 hover:scale-105 hover:bg-orange-600 cursor-pointer text-[#1c1c1c] font-bold py-3 px-6 rounded-lg shadow-md">
               Get Your Beanie →

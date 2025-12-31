@@ -55,7 +55,7 @@ const Shop = () => {
 
   return (
     <div className="w-full pb-10 bg-white/50 relative">
-      <div className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat bg-[url('/beanie.webp')]"> 
+      <div className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat bg-[url('/sarek.webp')]"> 
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <h1 className="text-3xl sm:text-6xl font-extrabold text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">Shop</h1>
         <p className="text-1xl w-5/6 sm:text-2xl text-center font-extrabold text-white absolute bottom-6 left-1/2 transform -translate-x-1/2">Browse our fine collection of beanies</p>

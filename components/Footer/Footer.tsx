@@ -18,7 +18,7 @@ const Footer = () => {
           <section>
             <h2 className="text-white text-2xl font-bold mb-5">ABOUT</h2>
             <div className="flex flex-col gap-2 max-w-[200px] sm:max-w-none mx-auto sm:mx-0">
-              <p className="text-white text-sm w-48 pb-3"> A Swedish beanie brand built by a solo developer. Clean design, timeless comfort.</p>
+              <p className="text-white text-sm w-48 pb-3">A Swedish beanie brand inspired by fishing, hiking and life outdoors.</p>
               <Link className="hover:hover:text-orange-400 text-white" href="/integritetspolicy">- Integrity</Link>
               <Link className="hover:hover:text-orange-400 text-white" href="/cookiespolicy"> - Cookies</Link>
             </div>

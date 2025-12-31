@@ -4,7 +4,7 @@ import Image from 'next/image'
 const Contact = () => {
   return (
     <div className='w-full pb-10 bg-gray-50 relative '>
-        <div className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat bg-[url('/beanie.webp')]">
+        <div className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat bg-[url('/sarek.webp')]">
         <div className="absolute inset-0 bg-black opacity-50"></div>
         </div>
 
@@ -44,8 +44,8 @@ const Contact = () => {
             </div>
           </div>
           <h2 className="text-[#1f1f1f] text-center mt-10 pb-5">Call us instead?</h2>
-          <p className="text-[#1f1f1f] text-center"><strong>VD:</strong> Dejan Gaspar </p>
-          <p className="text-[#1f1f1f] text-center"><strong>Phone:</strong> +46 123 456 789</p>
+          <p className="text-[#1f1f1f] text-center"><strong>The dude in charge:</strong> Dejan Gaspar </p>
+          <p className="text-[#1f1f1f] text-center"><strong>Phone:</strong> +46 73 350 91 97</p>
         </form>
     </div>
   )
