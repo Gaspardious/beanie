@@ -5,10 +5,10 @@ import React from 'react'
 const Integritetspolicy = () => {
   return (
       <div className='w-full pb-10 bg-blue-50 relative '>
-          <div className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat bg-[url('/drill.jpg')]">
+          <div className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat bg-[url('/sarek.webp')]">
           <div className="absolute inset-0 bg-black opacity-50"></div>
           </div>
-        <h1 className="text-3xl h-screen mt-5 sm:text-6xl font-extrabold text-white absolute top-20 left-1/2 transform -translate-x-1/2">Integritetspolicy</h1>
+        <h1 className="text-3xl h-screen mt-10 sm:text-6xl font-extrabold text-white absolute top-20 left-1/2 transform -translate-x-1/2">Integritetspolicy</h1>
         <p className="text-1xl w-5/6 sm:text-2xl text-center h-screen mt-15 sm:mt-20 font-extrabold text-white absolute top-30 left-1/2 transform -translate-x-1/2">Since May 25, 2018, the Personal Data Act (PUL) has been replaced by the new Data Protection Regulation (GDPR).</p>
        
         <div className="flex flex-col items-center justify-center h-full gap-5"> 
